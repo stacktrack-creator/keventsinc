@@ -9,7 +9,7 @@ export default async function handler(req, res) {
     const response = await fetch('https://api.notion.com/v1/pages', {
       method: 'POST',
       headers: {
-        'Authorization': 'Bearer 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',
+        'Authorization': 'Bearer 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',
         'Content-Type': 'application/json',
         'Notion-Version': '2022-06-28'
       },
