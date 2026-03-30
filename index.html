@@ -1440,7 +1440,7 @@
         </div>
       </div>
     </div>
-    <form class="inquiry-form" id="inquiryForm">
+    <form class="inquiry-form" id="inquiry-form">
       <div class="form-row">
         <div class="form-group">
           <label class="form-label" for="name1">Your Name</label>
@@ -1531,56 +1531,40 @@
       nav.classList.toggle('scrolled', window.scrollY > 20);
     }, { passive: true });
 
-    // Inquiry form submit
-    document.getElementById('inquiryForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const form = e.target;
-      const btn = form.querySelector('.form-submit');
-      const original = btn.textContent;
-      btn.textContent = 'Sending...';
-      btn.disabled = true;
-
-      try {
-        const data = {
-          name: form.querySelector('[name="name"]').value,
-          partner: form.querySelector('[name="partner"]').value,
-          email: form.querySelector('[name="email"]').value,
-          wedding_date: form.querySelector('[name="wedding_date"]').value,
-          service: form.querySelector('[name="service"]').value,
-          message: form.querySelector('[name="message"]').value
-        };
-
-        const res = await fetch('/api/submit', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
-
-        if (!res.ok) throw new Error('Request failed');
-
-        btn.textContent = 'Thank you! We\u2019ll be in touch within 48 hours.';
-        btn.style.background = '#2D2218';
-        btn.style.color = '#C4A06A';
-        setTimeout(() => {
-          btn.textContent = original;
-          btn.style.background = '';
-          btn.style.color = '';
-          btn.disabled = false;
-          form.reset();
-        }, 4000);
-      } catch (err) {
-        btn.textContent = 'Something went wrong. Please try again.';
-        btn.style.background = '#b44';
-        btn.style.color = '#fff';
-        setTimeout(() => {
-          btn.textContent = original;
-          btn.style.background = '';
-          btn.style.color = '';
-          btn.disabled = false;
-        }, 3000);
-      }
-    });
   </script>
+
+<script>
+document.getElementById('inquiry-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('button[type="submit"]');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  const data = {
+    name: this.querySelector('#name1').value,
+    partner: this.querySelector('#partner1').value,
+    email: this.querySelector('#email1').value,
+    wedding_date: this.querySelector('#date1').value,
+    service: this.querySelector('#service1').value,
+    message: this.querySelector('#msg1').value
+  };
+  try {
+    const res = await fetch('/api/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (res.ok) {
+      this.innerHTML = '<p style="color:#C4A06A;font-family:Playfair Display,serif;font-style:italic;font-size:20px;text-align:center;padding:40px 0">Thank you! We\'ll be in touch within 48 hours. ✨</p>';
+    } else {
+      throw new Error('Failed');
+    }
+  } catch {
+    btn.textContent = 'Send My Inquiry →';
+    btn.disabled = false;
+    alert('Something went wrong. Please email us directly at hello@keventsinc.com');
+  }
+});
+</script>
 
 </body>
 </html>
