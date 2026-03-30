@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>K Events Inc. — Toronto Wedding Planner</title>
+  <meta name="description" content="K Events Inc. is a luxury wedding planning company based in the GTA. Full planning, partial planning, and day-of coordination for your most important day." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:       #FAF7F2;
+      --cream-mid:   #F2EDE4;
+      --cream-dark:  #E8E0D4;
+      --mocha:       #2D2218;
+      --mocha-mid:   #5C4A38;
+      --mocha-light: #8A7260;
+      --gold:        #C4A06A;
+      --gold-light:  #D4B888;
+      --gold-pale:   #EDD9AF;
+      --white:       #FFFFFF;
+      --border:      rgba(45,34,24,0.12);
+      --border-light:rgba(45,34,24,0.07);
+
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans:  'DM Sans', system-ui, sans-serif;
+
+      --ease: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      font-weight: 300;
+      background: var(--cream);
+      color: var(--mocha);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; width: 100%; object-fit: cover; }
+    a { text-decoration: none; color: inherit; }
+    button { cursor: pointer; font-family: var(--sans); border: none; background: none; }
+
+    /* ── Typography Helpers ── */
+    .serif { font-family: var(--serif); }
+    .caps {
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+    .gold { color: var(--gold); }
+
+    /* ── Announcement Bar ── */
+    .announce {
+      background: var(--mocha);
+      color: var(--gold-pale);
+      text-align: center;
+      padding: 10px 24px;
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    /* ── Navigation ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--cream);
+      border-bottom: 0.5px solid var(--border);
+      padding: 0 48px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: box-shadow 0.3s var(--ease);
+    }
+
+    nav.scrolled {
+      box-shadow: 0 2px 24px rgba(45,34,24,0.07);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+
+    .nav-logo-mark {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--mocha);
+      line-height: 1;
+    }
+
+    .nav-logo-text {
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--mocha-light);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--mocha-light);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--mocha); }
+
+    .nav-cta {
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      background: var(--mocha);
+      color: var(--cream);
+      padding: 13px 28px;
+      transition: background 0.25s var(--ease), color 0.25s;
+    }
+
+    .nav-cta:hover { background: var(--gold); color: var(--mocha); }
+
+    .nav-mobile-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .nav-mobile-toggle span {
+      display: block;
+      width: 24px;
+      height: 0.5px;
+      background: var(--mocha);
+      transition: all 0.3s;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: calc(100vh - 112px);
+    }
+
+    .hero-text {
+      padding: 72px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: var(--cream);
+    }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 0.5px;
+      background: var(--gold);
+    }
+
+    .hero-eyebrow-text {
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .hero-h1 {
+      font-family: var(--serif);
+      font-size: clamp(44px, 4.5vw, 64px);
+      font-weight: 400;
+      line-height: 1.05;
+      color: var(--mocha);
+      margin-bottom: 28px;
+    }
+
+    .hero-h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--mocha-light);
+      max-width: 360px;
+      margin-bottom: 40px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      background: var(--mocha);
+      color: var(--cream);
+      padding: 16px 36px;
+      transition: background 0.25s var(--ease), color 0.25s;
+    }
+
+    .btn-primary:hover { background: var(--gold); color: var(--mocha); }
+
+    .btn-secondary {
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--mocha-light);
+      padding-bottom: 2px;
+      border-bottom: 0.5px solid var(--mocha-light);
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .btn-secondary:hover { color: var(--mocha); border-color: var(--mocha); }
+
+    .hero-imgs {
+      display: grid;
+      grid-template-rows: 60% 40%;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+      background: var(--cream-dark);
+      overflow: hidden;
+    }
+
+    .hero-img-main {
+      grid-row: 1 / 3;
+      grid-column: 1;
+      background: var(--cream-mid);
+      min-height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-light);
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 13px;
+      overflow: hidden;
+    }
+
+    .hero-img-sm {
+      background: var(--cream-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-light);
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 11px;
+      overflow: hidden;
+    }
+
+    /* placeholder gradients for demo */
+    .ph-1 { background: linear-gradient(145deg, #d4c5b0, #e8ddd0); }
+    .ph-2 { background: linear-gradient(145deg, #c8b89a, #ddd0bc); }
+    .ph-3 { background: linear-gradient(145deg, #b8a48a, #cfc0a8); }
+
+    /* ── Marquee Strip ── */
+    .strip {
+      background: var(--gold);
+      padding: 13px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .strip-track {
+      display: inline-flex;
+      gap: 0;
+      animation: marquee 28s linear infinite;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    .strip-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 28px;
+      padding: 0 28px;
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--mocha);
+    }
+
+    .strip-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--mocha);
+      opacity: 0.4;
+      flex-shrink: 0;
+    }
+
+    /* ── About / Philosophy ── */
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .about-img-side {
+      position: relative;
+      background: var(--cream-mid);
+      min-height: 520px;
+      display: flex;
+      align-items: stretch;
+    }
+
+    .about-img-wrap {
+      width: 100%;
+      display: grid;
+      grid-template-rows: 1fr;
+    }
+
+    .about-img-main {
+      background: linear-gradient(160deg, #d4c5b0, #bfae96);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-light);
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 13px;
+      min-height: 100%;
+    }
+
+    .about-text {
+      padding: 80px 64px;
+      background: var(--cream);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 0.5px;
+      background: var(--gold);
+    }
+
+    .section-label-text {
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .section-h2 {
+      font-family: var(--serif);
+      font-size: clamp(32px, 3vw, 44px);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--mocha);
+      margin-bottom: 24px;
+    }
+
+    .section-h2 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .about-body {
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--mocha-light);
+      margin-bottom: 16px;
+    }
+
+    .about-values {
+      margin-top: 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .about-value {
+      padding: 20px 0;
+      border-top: 0.5px solid var(--border);
+    }
+
+    .about-value-label {
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+
+    .about-value-text {
+      font-family: var(--serif);
+      font-size: 15px;
+      font-style: italic;
+      color: var(--mocha);
+      line-height: 1.4;
+    }
+
+    /* ── Services ── */
+    .services {
+      background: var(--mocha);
+      padding: 96px 64px;
+    }
+
+    .services-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 60px;
+    }
+
+    .services-header-left {}
+
+    .section-label-light {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .section-label-light::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 0.5px;
+      background: var(--gold);
+    }
+
+    .section-label-light-text {
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .section-h2-light {
+      font-family: var(--serif);
+      font-size: clamp(32px, 3vw, 44px);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--cream);
+    }
+
+    .section-h2-light em { font-style: italic; color: var(--gold); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+
+    .service-card {
+      background: var(--mocha);
+      padding: 44px 36px;
+      position: relative;
+      transition: background 0.3s var(--ease);
+      cursor: pointer;
+    }
+
+    .service-card:hover { background: #3d3020; }
+
+    .service-num {
+      font-family: var(--serif);
+      font-size: 52px;
+      font-weight: 400;
+      color: rgba(196,160,106,0.2);
+      line-height: 1;
+      margin-bottom: 20px;
+      transition: color 0.3s;
+    }
+
+    .service-card:hover .service-num { color: rgba(196,160,106,0.5); }
+
+    .service-title {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+
+    .service-desc {
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--mocha-light);
+      margin-bottom: 32px;
+    }
+
+    .service-includes {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 36px;
+    }
+
+    .service-include-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      font-weight: 300;
+      color: rgba(196,160,106,0.7);
+    }
+
+    .service-include-item::before {
+      content: '';
+      display: block;
+      width: 16px;
+      height: 0.5px;
+      background: var(--gold);
+      opacity: 0.5;
+      flex-shrink: 0;
+    }
+
+    .service-link {
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: gap 0.2s;
+    }
+
+    .service-card:hover .service-link { gap: 16px; }
+
+    /* ── Process ── */
+    .process {
+      padding: 96px 64px;
+      background: var(--cream);
+    }
+
+    .process-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      position: relative;
+    }
+
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: calc(16.66% + 20px);
+      right: calc(16.66% + 20px);
+      height: 0.5px;
+      background: var(--gold-pale);
+    }
+
+    .process-step {
+      text-align: center;
+      padding: 0 32px;
+    }
+
+    .step-circle {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 0.5px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 28px;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 20px;
+      color: var(--gold);
+      background: var(--cream);
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-title {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--mocha);
+      margin-bottom: 12px;
+    }
+
+    .step-desc {
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--mocha-light);
+    }
+
+    /* ── Portfolio ── */
+    .portfolio {
+      padding: 96px 64px;
+      background: var(--cream-mid);
+    }
+
+    .portfolio-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 48px;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto;
+      gap: 6px;
+    }
+
+    .portfolio-item {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      background: var(--cream-dark);
+    }
+
+    .portfolio-item:first-child {
+      grid-column: 1 / 2;
+      grid-row: 1 / 3;
+    }
+
+    .portfolio-img {
+      aspect-ratio: 4/5;
+      transition: transform 0.6s var(--ease);
+    }
+
+    .portfolio-item:first-child .portfolio-img {
+      aspect-ratio: 4/7;
+    }
+
+    .portfolio-img-ph {
+      width: 100%;
+      height: 100%;
+      min-height: 200px;
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+    }
+
+    .portfolio-item:hover .portfolio-img { transform: scale(1.04); }
+
+    .portfolio-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(45,34,24,0.75) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.4s var(--ease);
+      display: flex;
+      align-items: flex-end;
+      padding: 24px;
+    }
+
+    .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+
+    .portfolio-label {
+      color: var(--cream);
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 16px;
+    }
+
+    .portfolio-type {
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* ── Testimonials ── */
+    .testimonials {
+      padding: 96px 64px;
+      background: var(--cream);
+    }
+
+    .testimonials-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .testi-card {
+      background: var(--white);
+      border: 0.5px solid var(--border);
+      padding: 36px 32px;
+    }
+
+    .testi-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 20px;
+    }
+
+    .testi-star {
+      width: 12px;
+      height: 12px;
+      background: var(--gold);
+      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    }
+
+    .testi-quote {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.65;
+      color: var(--mocha);
+      margin-bottom: 24px;
+    }
+
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      border-top: 0.5px solid var(--border);
+      padding-top: 20px;
+    }
+
+    .testi-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--cream-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 15px;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .testi-name {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--mocha);
+    }
+
+    .testi-event {
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 1px;
+      color: var(--mocha-light);
+    }
+
+    /* ── CTA / Inquiry ── */
+    .cta-section {
+      background: var(--mocha);
+      padding: 96px 64px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .cta-left {}
+
+    .cta-h2 {
+      font-family: var(--serif);
+      font-size: clamp(32px, 3vw, 50px);
+      font-weight: 400;
+      line-height: 1.1;
+      color: var(--cream);
+      margin-bottom: 20px;
+    }
+
+    .cta-h2 em { font-style: italic; color: var(--gold); }
+
+    .cta-body {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.8;
+      color: var(--mocha-light);
+      margin-bottom: 32px;
+    }
+
+    .cta-contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .cta-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--gold-light);
+    }
+
+    .cta-contact-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      border: 0.5px solid var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* ── Inquiry Form ── */
+    .inquiry-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-label {
+      font-size: 9px;
+      font-weight: 300;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      background: rgba(255,255,255,0.05);
+      border: 0.5px solid rgba(196,160,106,0.25);
+      color: var(--cream);
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 300;
+      padding: 13px 16px;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .form-input::placeholder,
+    .form-textarea::placeholder { color: rgba(250,247,242,0.3); }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus { border-color: var(--gold); }
+
+    .form-select { cursor: pointer; }
+
+    .form-select option { background: var(--mocha); color: var(--cream); }
+
+    .form-textarea { resize: vertical; min-height: 100px; }
+
+    .form-submit {
+      background: var(--gold);
+      color: var(--mocha);
+      font-family: var(--sans);
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 16px 32px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.25s var(--ease), color 0.25s;
+      align-self: flex-start;
+    }
+
+    .form-submit:hover { background: var(--cream); }
+
+    /* ── Footer ── */
+    footer {
+      background: #1a1108;
+      padding: 60px 64px 32px;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+      padding-bottom: 48px;
+      border-bottom: 0.5px solid rgba(255,255,255,0.07);
+    }
+
+    .footer-brand {}
+
+    .footer-logo-mark {
+      font-family: var(--serif);
+      font-size: 32px;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--cream);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .footer-logo-sub {
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--mocha-light);
+      margin-bottom: 20px;
+    }
+
+    .footer-bio {
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--mocha-light);
+      max-width: 240px;
+    }
+
+    .footer-ig {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 20px;
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--gold);
+      letter-spacing: 1px;
+      transition: color 0.2s;
+    }
+
+    .footer-ig:hover { color: var(--gold-light); }
+
+    .footer-ig-icon {
+      width: 14px;
+      height: 14px;
+      border: 0.5px solid var(--gold);
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-col-title {
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .footer-col-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-col-links a {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--mocha-light);
+      transition: color 0.2s;
+    }
+
+    .footer-col-links a:hover { color: var(--cream); }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .footer-copy {
+      font-size: 11px;
+      font-weight: 300;
+      color: rgba(138,114,96,0.6);
+      letter-spacing: 1px;
+    }
+
+    .footer-booking {
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.7;
+    }
+
+    /* ── Portfolio placeholder fills ── */
+    .pf-1 { background: linear-gradient(145deg, #d0bfa8, #c4ad92); min-height: 380px; }
+    .pf-2 { background: linear-gradient(145deg, #c8b498, #bca882); }
+    .pf-3 { background: linear-gradient(145deg, #d8caB8, #c8b8a4); }
+    .pf-4 { background: linear-gradient(145deg, #c0ae96, #b4a28a); }
+    .pf-5 { background: linear-gradient(145deg, #cebfa8, #c2b094); }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+
+      .nav-links, .nav-cta { display: none; }
+      .nav-mobile-toggle { display: flex; }
+
+      .hero { grid-template-columns: 1fr; }
+      .hero-text { padding: 48px 24px; }
+      .hero-imgs { min-height: 320px; display: flex; }
+      .hero-img-sm:last-child { display: none; }
+
+      .about { grid-template-columns: 1fr; }
+      .about-img-side { min-height: 300px; }
+      .about-text { padding: 48px 24px; }
+      .about-values { grid-template-columns: 1fr; }
+
+      .services { padding: 64px 24px; }
+      .services-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .services-grid { grid-template-columns: 1fr; }
+
+      .process { padding: 64px 24px; }
+      .process-steps { grid-template-columns: 1fr; gap: 40px; }
+      .process-steps::before { display: none; }
+
+      .portfolio { padding: 64px 24px; }
+      .portfolio-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .portfolio-grid { grid-template-columns: 1fr 1fr; }
+      .portfolio-item:first-child { grid-column: 1 / 3; grid-row: 1; }
+      .portfolio-item:first-child .portfolio-img { aspect-ratio: 16/9; }
+
+      .testimonials { padding: 64px 24px; }
+      .testi-grid { grid-template-columns: 1fr; }
+
+      .cta-section { grid-template-columns: 1fr; padding: 64px 24px; gap: 48px; }
+
+      .form-row { grid-template-columns: 1fr; }
+
+      footer { padding: 48px 24px 24px; }
+      .footer-top { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Announcement Bar -->
+  <div class="announce">Now Booking 2026 &amp; 2027 &mdash; Limited Availability</div>
+
+  <!-- Navigation -->
+  <nav id="main-nav">
+    <a href="#" class="nav-logo" aria-label="K Events Inc. Home">
+      <span class="nav-logo-mark">K</span>
+      <span class="nav-logo-text">Events Inc.</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#about">Our Story</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+    </ul>
+    <a href="#inquire" class="nav-cta">Let&rsquo;s Connect</a>
+    <div class="nav-mobile-toggle" id="mobile-toggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" aria-label="Welcome">
+    <div class="hero-text">
+      <div class="hero-eyebrow">
+        <span class="hero-eyebrow-text">GTA Wedding Planner</span>
+      </div>
+      <h1 class="hero-h1">
+        We plan,<br />
+        so you can<br />
+        <em>be present.</em>
+      </h1>
+      <p class="hero-sub">
+        K Events Inc. crafts luxury weddings and celebrations with warmth, precision, and every detail handled — so you and your loved ones can live in the moment.
+      </p>
+      <div class="hero-actions">
+        <a href="#inquire" class="btn-primary">Start Your Story</a>
+        <a href="#portfolio" class="btn-secondary">View Our Work</a>
+      </div>
+    </div>
+    <div class="hero-imgs" aria-hidden="true">
+      <div class="hero-img-main ph-1">
+        <!-- Replace with <img src="your-hero-photo.jpg" alt="Wedding by K Events Inc" /> -->
+      </div>
+      <div class="hero-img-sm ph-2"></div>
+      <div class="hero-img-sm ph-3"></div>
+    </div>
+  </section>
+
+  <!-- Marquee Strip -->
+  <div class="strip" aria-hidden="true">
+    <div class="strip-track">
+      <!-- Duplicated for seamless loop -->
+      <span class="strip-item">Full Year Planning <span class="strip-dot"></span></span>
+      <span class="strip-item">Partial Planning <span class="strip-dot"></span></span>
+      <span class="strip-item">Day-Of Coordination <span class="strip-dot"></span></span>
+      <span class="strip-item">South Asian Weddings <span class="strip-dot"></span></span>
+      <span class="strip-item">Inter-Faith Ceremonies <span class="strip-dot"></span></span>
+      <span class="strip-item">GTA &amp; Beyond <span class="strip-dot"></span></span>
+      <span class="strip-item">Now Booking 2026 &amp; 2027 <span class="strip-dot"></span></span>
+      <span class="strip-item">Full Year Planning <span class="strip-dot"></span></span>
+      <span class="strip-item">Partial Planning <span class="strip-dot"></span></span>
+      <span class="strip-item">Day-Of Coordination <span class="strip-dot"></span></span>
+      <span class="strip-item">South Asian Weddings <span class="strip-dot"></span></span>
+      <span class="strip-item">Inter-Faith Ceremonies <span class="strip-dot"></span></span>
+      <span class="strip-item">GTA &amp; Beyond <span class="strip-dot"></span></span>
+      <span class="strip-item">Now Booking 2026 &amp; 2027 <span class="strip-dot"></span></span>
+    </div>
+  </div>
+
+  <!-- About -->
+  <section class="about" id="about" aria-label="About K Events Inc">
+    <div class="about-img-side">
+      <div class="about-img-main" style="min-height:520px;">
+        <!-- Replace with <img src="your-team-photo.jpg" alt="The K Events team" /> -->
+      </div>
+    </div>
+    <div class="about-text">
+      <div class="section-label">
+        <span class="section-label-text">Our Philosophy</span>
+      </div>
+      <h2 class="section-h2">Love is in<br />the <em>details.</em></h2>
+      <p class="about-body">
+        At K Events Inc., we believe your wedding day should feel exactly like you imagined — effortless, beautiful, and full of meaning. Our role is to hold every thread so you can be fully present with the people you love.
+      </p>
+      <p class="about-body">
+        From intimate ceremonies to multi-day celebrations, we bring warmth, creativity, and meticulous care to every event we plan across the Greater Toronto Area.
+      </p>
+      <div class="about-values">
+        <div class="about-value">
+          <div class="about-value-label">Our Approach</div>
+          <div class="about-value-text">Personalized, end-to-end service</div>
+        </div>
+        <div class="about-value">
+          <div class="about-value-label">Our Specialty</div>
+          <div class="about-value-text">Luxury &amp; inter-faith weddings</div>
+        </div>
+        <div class="about-value">
+          <div class="about-value-label">Our Promise</div>
+          <div class="about-value-text">Calm, joy &amp; zero stress</div>
+        </div>
+        <div class="about-value">
+          <div class="about-value-label">Our Home</div>
+          <div class="about-value-text">Greater Toronto Area</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="services" id="services" aria-label="Our Services">
+    <div class="services-header">
+      <div class="services-header-left">
+        <div class="section-label-light">
+          <span class="section-label-light-text">What We Offer</span>
+        </div>
+        <h2 class="section-h2-light">Our <em>Services</em></h2>
+      </div>
+      <a href="#inquire" class="btn-primary" style="flex-shrink:0;">Inquire Now</a>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-num">01</div>
+        <h3 class="service-title">Full Year Planning</h3>
+        <p class="service-desc">Our most comprehensive experience — 12+ months of end-to-end planning, design, and coordination tailored entirely to your vision.</p>
+        <div class="service-includes">
+          <span class="service-include-item">Venue selection &amp; vendor management</span>
+          <span class="service-include-item">Full design concept &amp; mood boarding</span>
+          <span class="service-include-item">Budget management &amp; timeline</span>
+          <span class="service-include-item">Day-of execution &amp; coordination</span>
+        </div>
+        <a href="#inquire" class="service-link">Learn More &rarr;</a>
+      </div>
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <h3 class="service-title">Partial Planning</h3>
+        <p class="service-desc">Already started? We step in wherever you are and take it from there — filling gaps, connecting the dots, and making sure nothing falls through.</p>
+        <div class="service-includes">
+          <span class="service-include-item">Vendor review &amp; gap analysis</span>
+          <span class="service-include-item">Timeline &amp; logistics coordination</span>
+          <span class="service-include-item">Design review &amp; refinement</span>
+          <span class="service-include-item">Full day-of support</span>
+        </div>
+        <a href="#inquire" class="service-link">Learn More &rarr;</a>
+      </div>
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <h3 class="service-title">Day-Of Coordination</h3>
+        <p class="service-desc">You&rsquo;ve planned it all — we make sure it runs perfectly. Flawless execution from first look to final dance, while you live every moment.</p>
+        <div class="service-includes">
+          <span class="service-include-item">Pre-event vendor confirmation</span>
+          <span class="service-include-item">Full itinerary &amp; run-of-show</span>
+          <span class="service-include-item">On-site coordination team</span>
+          <span class="service-include-item">Problem-solving &amp; backup planning</span>
+        </div>
+        <a href="#inquire" class="service-link">Learn More &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="process" aria-label="How we work">
+    <div class="process-header">
+      <div class="section-label" style="justify-content:center;">
+        <span class="section-label-text">How It Works</span>
+      </div>
+      <h2 class="section-h2" style="text-align:center;">Your journey with us</h2>
+    </div>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-circle">01</div>
+        <h3 class="step-title">Let&rsquo;s Connect</h3>
+        <p class="step-desc">We start with a discovery call to understand your vision, your people, and what matters most to you. No pressure — just a conversation.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-circle">02</div>
+        <h3 class="step-title">Seal the Deal</h3>
+        <p class="step-desc">Once we&rsquo;re the right fit, we save your date with a signed contract and deposit. You&rsquo;ll receive a welcome package and a clear roadmap.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-circle">03</div>
+        <h3 class="step-title">Your Big Day</h3>
+        <p class="step-desc">We handle every detail behind the scenes. You show up, you glow, you dance. We&rsquo;ll make sure it&rsquo;s everything you dreamed of.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section class="portfolio" id="portfolio" aria-label="Our Work">
+    <div class="portfolio-header">
+      <div>
+        <div class="section-label">
+          <span class="section-label-text">Our Work</span>
+        </div>
+        <h2 class="section-h2">Recent <em>Love Stories</em></h2>
+      </div>
+      <a href="https://www.instagram.com/keventsinc/" target="_blank" rel="noopener" class="btn-secondary" style="color:var(--mocha-light);border-color:var(--mocha-light);">View on Instagram</a>
+    </div>
+    <div class="portfolio-grid">
+      <div class="portfolio-item">
+        <div class="portfolio-img pf-1 ph-1 portfolio-img-ph">
+          <!-- <img src="wedding-1.jpg" alt="Priya & Rohit Wedding" /> -->
+        </div>
+        <div class="portfolio-overlay">
+          <div>
+            <span class="portfolio-type">Full Planning</span>
+            <div class="portfolio-label">A &amp; S — Anand Karaj</div>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <div class="portfolio-img pf-2 portfolio-img-ph" style="min-height:200px;aspect-ratio:4/3;">
+          <!-- <img src="wedding-2.jpg" alt="Reception decor" /> -->
+        </div>
+        <div class="portfolio-overlay">
+          <div>
+            <span class="portfolio-type">Day-Of Coordination</span>
+            <div class="portfolio-label">M &amp; T — Grand Reception</div>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <div class="portfolio-img pf-3 portfolio-img-ph" style="min-height:200px;aspect-ratio:4/3;">
+          <!-- <img src="wedding-3.jpg" alt="Sangeet night" /> -->
+        </div>
+        <div class="portfolio-overlay">
+          <div>
+            <span class="portfolio-type">Full Planning</span>
+            <div class="portfolio-label">Y &amp; S — Sangeet Night</div>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <div class="portfolio-img pf-4 portfolio-img-ph" style="min-height:200px;aspect-ratio:4/3;">
+          <!-- <img src="wedding-4.jpg" alt="Inter-faith ceremony" /> -->
+        </div>
+        <div class="portfolio-overlay">
+          <div>
+            <span class="portfolio-type">Partial Planning</span>
+            <div class="portfolio-label">L &amp; H — Fusion Ceremony</div>
+          </div>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <div class="portfolio-img pf-5 portfolio-img-ph" style="min-height:200px;aspect-ratio:4/3;">
+          <!-- <img src="wedding-5.jpg" alt="Wedding reception" /> -->
+        </div>
+        <div class="portfolio-overlay">
+          <div>
+            <span class="portfolio-type">Full Planning</span>
+            <div class="portfolio-label">I &amp; S — The Grand Finale</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials" id="testimonials" aria-label="Client Reviews">
+    <div class="testimonials-header">
+      <div class="section-label" style="justify-content:center;">
+        <span class="section-label-text">Client Love</span>
+      </div>
+      <h2 class="section-h2">What our couples say</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-stars">
+          <div class="testi-star"></div><div class="testi-star"></div><div class="testi-star"></div><div class="testi-star"></div><div class="testi-star"></div>
+        </div>
+        <blockquote class="testi-quote">"K Events made our wedding week feel completely effortless. Our families were so relaxed — they actually got to enjoy every moment. We couldn't have done it without them."</blockquote>
+        <div class="testi-author">
+          <div class="testi-avatar">A</div>
+          <div>
+            <div class="testi-name">Anisha &amp; Samir</div>
+            <div class="testi-event">Full Year Planning &mdash; 2024</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">
+          <div class="testi-star"></div><div class="testi-star"></div><div class="testi-star"></div><div class="testi-star"></div><div class="testi-star"></div>
+        </div>
+        <blockquote class="testi-quote">"They took our vision and ran with it. Quick problem-solvers, incredibly organized, and they always met us with a smile. I would trust K Events to plan any event of mine."</blockquote>
+        <div class="testi-author">
+          <div class="testi-avatar">L</div>
+          <div>
+            <div class="testi-name">Leena &amp; Hitesh</div>
+            <div class="testi-event">Day-Of Coordination &mdash; 2024</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">
+          <div class="testi-star"></div><div class="testi-star"></div><div class="testi-star"></div><div class="testi-star"></div><div class="testi-star"></div>
+        </div>
+        <blockquote class="testi-quote">"Our inter-faith ceremony was everything we hoped for. They blended both cultures so beautifully and kept everyone calm behind the scenes. Truly the best."</blockquote>
+        <div class="testi-author">
+          <div class="testi-avatar">M</div>
+          <div>
+            <div class="testi-name">Maya &amp; Tej</div>
+            <div class="testi-event">Full Year Planning &mdash; 2024</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / Inquiry Form -->
+  <section class="cta-section" id="inquire" aria-label="Inquiry Form">
+    <div class="cta-left">
+      <div class="section-label-light">
+        <span class="section-label-light-text">Get In Touch</span>
+      </div>
+      <h2 class="cta-h2">Ready to start<br /><em>your story?</em></h2>
+      <p class="cta-body">We&rsquo;d love to hear about your day. Fill out the form and we&rsquo;ll be in touch within 48 hours to schedule your complimentary discovery call.</p>
+      <div class="cta-contact-list">
+        <div class="cta-contact-item">
+          <div class="cta-contact-dot"></div>
+          <span>hello@keventsinc.com</span>
+        </div>
+        <div class="cta-contact-item">
+          <div class="cta-contact-dot"></div>
+          <span>@keventsinc on Instagram</span>
+        </div>
+        <div class="cta-contact-item">
+          <div class="cta-contact-dot"></div>
+          <span>Based in Toronto, GTA &amp; Beyond</span>
+        </div>
+      </div>
+    </div>
+    <form class="inquiry-form" onsubmit="handleSubmit(event)" novalidate>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="name1">Your Name</label>
+          <input class="form-input" id="name1" type="text" placeholder="Your name" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="partner1">Partner's Name</label>
+          <input class="form-input" id="partner1" type="text" placeholder="Partner's name" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="email1">Email Address</label>
+        <input class="form-input" id="email1" type="email" placeholder="your@email.com" required />
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="date1">Wedding Date</label>
+          <input class="form-input" id="date1" type="text" placeholder="Month, Year" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="service1">Service</label>
+          <select class="form-select form-input" id="service1">
+            <option value="" disabled selected>Select a service</option>
+            <option>Full Year Planning</option>
+            <option>Partial Planning</option>
+            <option>Day-Of Coordination</option>
+            <option>Not Sure Yet</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="msg1">Tell Us About Your Day</label>
+        <textarea class="form-textarea" id="msg1" placeholder="Tell us about your vision, guest count, venue ideas, or anything else on your mind…"></textarea>
+      </div>
+      <button type="submit" class="form-submit">Send My Inquiry &rarr;</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo-mark">K</div>
+        <div class="footer-logo-sub">Events Inc.</div>
+        <p class="footer-bio">Luxury wedding planning &amp; coordination for couples who want every moment to feel exactly right. Based in Toronto, serving the GTA &amp; beyond.</p>
+        <a href="https://www.instagram.com/keventsinc/" target="_blank" rel="noopener" class="footer-ig">
+          <span class="footer-ig-icon">
+            <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </span>
+          @keventsinc
+        </a>
+      </div>
+      <div>
+        <div class="footer-col-title">Services</div>
+        <div class="footer-col-links">
+          <a href="#services">Full Year Planning</a>
+          <a href="#services">Partial Planning</a>
+          <a href="#services">Day-Of Coordination</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <div class="footer-col-links">
+          <a href="#about">Our Story</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#testimonials">Reviews</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <div class="footer-col-links">
+          <a href="#inquire">Inquire</a>
+          <a href="mailto:hello@keventsinc.com">Email Us</a>
+          <a href="https://www.instagram.com/keventsinc/" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">&copy; 2025 K Events Inc. All rights reserved.</div>
+      <div class="footer-booking">Now Booking 2026 &amp; 2027</div>
+    </div>
+  </footer>
+
+  <script>
+    // Sticky nav shadow on scroll
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    // Form submit handler
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.form-submit');
+      const original = btn.textContent;
+      btn.textContent = 'Message Sent \u2713';
+      btn.style.background = '#2D2218';
+      btn.style.color = '#C4A06A';
+      setTimeout(() => {
+        btn.textContent = original;
+        btn.style.background = '';
+        btn.style.color = '';
+        e.target.reset();
+      }, 3000);
+    }
+  </script>
+
+</body>
+</html>
