@@ -309,26 +309,21 @@
         }
 
         container.innerHTML = items.map(item => {
-          const names = [item.name, item.partner].filter(Boolean).join(' & ');
-          const date = item.submitted_at
-            ? new Date(item.submitted_at).toLocaleString('en-US', {
-                month: 'short', day: 'numeric', year: 'numeric',
-                hour: 'numeric', minute: '2-digit'
-              })
-            : '';
+          const names = [item.Name, item.Partner].filter(Boolean).join(' & ');
+          const date = item['Submitted At'] || '';
 
           return `
             <div class="card">
               <div class="card-header">
                 <div class="card-names">${esc(names)}</div>
-                ${item.service ? `<div class="card-service">${esc(item.service)}</div>` : ''}
+                ${item.Service ? `<div class="card-service">${esc(item.Service)}</div>` : ''}
               </div>
               <div class="card-meta">
-                ${item.email ? `<span><a href="mailto:${esc(item.email)}">${esc(item.email)}</a></span>` : ''}
-                ${item.wedding_date ? `<span>${esc(item.wedding_date)}</span>` : ''}
+                ${item.Email ? `<span><a href="mailto:${esc(item.Email)}">${esc(item.Email)}</a></span>` : ''}
+                ${item['Wedding Date'] ? `<span>${esc(item['Wedding Date'])}</span>` : ''}
               </div>
-              ${item.message ? `<div class="card-message">${esc(item.message)}</div>` : ''}
-              ${date ? `<div class="card-time">Submitted ${date}</div>` : ''}
+              ${item.Message ? `<div class="card-message">${esc(item.Message)}</div>` : ''}
+              ${date ? `<div class="card-time">Submitted ${esc(date)}</div>` : ''}
             </div>
           `;
         }).join('');
