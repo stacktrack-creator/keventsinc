@@ -5,7 +5,7 @@ export default async function handler(req, res) {
     const response = await fetch('https://api.notion.com/v1/databases/333e3565dd3580649748c3aa51e47551/query', {
       method: 'POST',
       headers: {
-        'Authorization': 'Bearer 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',
+        'Authorization': `Bearer ${process.env.NOTION_SECRET}`,
         'Content-Type': 'application/json',
         'Notion-Version': '2022-06-28'
       },
