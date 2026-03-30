@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>K Events Inc. — Admin Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:       #FAF7F2;
+      --cream-mid:   #F2EDE4;
+      --cream-dark:  #E8E0D4;
+      --mocha:       #2D2218;
+      --mocha-mid:   #5C4A38;
+      --mocha-light: #8A7260;
+      --gold:        #C4A06A;
+      --gold-light:  #D4B888;
+      --gold-pale:   #EDD9AF;
+      --white:       #FFFFFF;
+      --border:      rgba(45,34,24,0.12);
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans:  'DM Sans', system-ui, sans-serif;
+    }
+
+    body {
+      font-family: var(--sans);
+      background: var(--cream);
+      color: var(--mocha);
+      min-height: 100vh;
+    }
+
+    /* Login Screen */
+    .login-overlay {
+      position: fixed;
+      inset: 0;
+      background: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .login-overlay.hidden { display: none; }
+
+    .login-box {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 3rem 2.5rem;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+    }
+
+    .login-box h1 {
+      font-family: var(--serif);
+      font-size: 1.8rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .login-box p {
+      color: var(--mocha-light);
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .login-input {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      background: var(--cream);
+      color: var(--mocha);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .login-input:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 0.8rem;
+      background: var(--mocha);
+      color: var(--gold);
+      border: none;
+      border-radius: 8px;
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      font-weight: 400;
+      cursor: pointer;
+      letter-spacing: 0.06em;
+      transition: opacity 0.2s;
+    }
+
+    .login-btn:hover { opacity: 0.85; }
+
+    .login-error {
+      color: #b44;
+      font-size: 0.85rem;
+      margin-top: 0.8rem;
+      display: none;
+    }
+
+    /* Dashboard */
+    .dashboard { display: none; }
+    .dashboard.visible { display: block; }
+
+    .dash-header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 1.2rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .dash-title {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+    }
+
+    .dash-actions { display: flex; gap: 0.8rem; align-items: center; }
+
+    .dash-count {
+      font-size: 0.85rem;
+      color: var(--mocha-light);
+    }
+
+    .refresh-btn {
+      padding: 0.5rem 1.2rem;
+      background: var(--mocha);
+      color: var(--gold);
+      border: none;
+      border-radius: 6px;
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      transition: opacity 0.2s;
+    }
+
+    .refresh-btn:hover { opacity: 0.85; }
+
+    .cards {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem 1.8rem;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.8rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .card-names {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+    }
+
+    .card-service {
+      background: var(--cream-mid);
+      color: var(--mocha-mid);
+      padding: 0.25rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+
+    .card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--mocha-light);
+      margin-bottom: 0.8rem;
+    }
+
+    .card-meta a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .card-meta a:hover { text-decoration: underline; }
+
+    .card-message {
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: var(--mocha-mid);
+    }
+
+    .card-time {
+      font-size: 0.78rem;
+      color: var(--mocha-light);
+      margin-top: 0.8rem;
+      opacity: 0.7;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 4rem 1rem;
+      color: var(--mocha-light);
+      font-size: 0.95rem;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 4rem 1rem;
+      color: var(--mocha-light);
+    }
+
+    @media (max-width: 600px) {
+      .dash-header { padding: 1rem; flex-wrap: wrap; gap: 0.5rem; }
+      .card { padding: 1.2rem; }
+      .card-meta { gap: 0.8rem; }
+      .cards { padding: 0 1rem; margin: 1.2rem auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Login -->
+  <div class="login-overlay" id="loginOverlay">
+    <div class="login-box">
+      <h1>K Events Inc.</h1>
+      <p>Admin Dashboard</p>
+      <form id="loginForm">
+        <input class="login-input" type="password" id="passwordInput" placeholder="Enter password" autocomplete="off" />
+        <button type="submit" class="login-btn">Unlock Dashboard</button>
+      </form>
+      <div class="login-error" id="loginError">Incorrect password. Please try again.</div>
+    </div>
+  </div>
+
+  <!-- Dashboard -->
+  <div class="dashboard" id="dashboard">
+    <div class="dash-header">
+      <div class="dash-title">Inquiry Dashboard</div>
+      <div class="dash-actions">
+        <span class="dash-count" id="dashCount"></span>
+        <button class="refresh-btn" id="refreshBtn">Refresh</button>
+      </div>
+    </div>
+    <div class="cards" id="cardsContainer">
+      <div class="loading">Loading inquiries...</div>
+    </div>
+  </div>
+
+  <script>
+    const PASSWORD = 'keventsinc2024';
+
+    // Login
+    document.getElementById('loginForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const val = document.getElementById('passwordInput').value;
+      if (val === PASSWORD) {
+        document.getElementById('loginOverlay').classList.add('hidden');
+        document.getElementById('dashboard').classList.add('visible');
+        loadInquiries();
+      } else {
+        document.getElementById('loginError').style.display = 'block';
+      }
+    });
+
+    // Refresh
+    document.getElementById('refreshBtn').addEventListener('click', loadInquiries);
+
+    async function loadInquiries() {
+      const container = document.getElementById('cardsContainer');
+      container.innerHTML = '<div class="loading">Loading inquiries...</div>';
+
+      try {
+        const res = await fetch('/api/inquiries');
+        if (!res.ok) throw new Error('Failed to fetch');
+        const data = await res.json();
+        const items = data.inquiries;
+
+        document.getElementById('dashCount').textContent = `${items.length} inquir${items.length === 1 ? 'y' : 'ies'}`;
+
+        if (items.length === 0) {
+          container.innerHTML = '<div class="empty-state">No inquiries yet.</div>';
+          return;
+        }
+
+        container.innerHTML = items.map(item => {
+          const names = [item.name, item.partner].filter(Boolean).join(' & ');
+          const date = item.submitted_at
+            ? new Date(item.submitted_at).toLocaleString('en-US', {
+                month: 'short', day: 'numeric', year: 'numeric',
+                hour: 'numeric', minute: '2-digit'
+              })
+            : '';
+
+          return `
+            <div class="card">
+              <div class="card-header">
+                <div class="card-names">${esc(names)}</div>
+                ${item.service ? `<div class="card-service">${esc(item.service)}</div>` : ''}
+              </div>
+              <div class="card-meta">
+                ${item.email ? `<span><a href="mailto:${esc(item.email)}">${esc(item.email)}</a></span>` : ''}
+                ${item.wedding_date ? `<span>${esc(item.wedding_date)}</span>` : ''}
+              </div>
+              ${item.message ? `<div class="card-message">${esc(item.message)}</div>` : ''}
+              ${date ? `<div class="card-time">Submitted ${date}</div>` : ''}
+            </div>
+          `;
+        }).join('');
+      } catch (err) {
+        container.innerHTML = '<div class="empty-state">Failed to load inquiries. Please try again.</div>';
+      }
+    }
+
+    function esc(str) {
+      const d = document.createElement('div');
+      d.textContent = str;
+      return d.innerHTML;
+    }
+  </script>
+
+</body>
+</html>
