@@ -335,485 +335,6 @@
       flex-shrink: 0;
     }
 
-    /* ── About / Philosophy ── */
-    .about {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-    }
-
-    .about-img-side {
-      position: relative;
-      background: var(--cream-mid);
-      min-height: 520px;
-      display: flex;
-      align-items: stretch;
-    }
-
-    .about-img-wrap {
-      width: 100%;
-      display: grid;
-      grid-template-rows: 1fr;
-    }
-
-    .about-img-main {
-      background: linear-gradient(160deg, #d4c5b0, #bfae96);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--gold-light);
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: 13px;
-      min-height: 100%;
-    }
-
-    .about-text {
-      padding: 80px 64px;
-      background: var(--cream);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .section-label {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 24px;
-    }
-
-    .section-label::before {
-      content: '';
-      display: block;
-      width: 24px;
-      height: 0.5px;
-      background: var(--gold);
-    }
-
-    .section-label-text {
-      font-size: 10px;
-      font-weight: 300;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-
-    .section-h2 {
-      font-family: var(--serif);
-      font-size: clamp(32px, 3vw, 44px);
-      font-weight: 400;
-      line-height: 1.15;
-      color: var(--mocha);
-      margin-bottom: 24px;
-    }
-
-    .section-h2 em {
-      font-style: italic;
-      color: var(--gold);
-    }
-
-    .about-body {
-      font-size: 15px;
-      font-weight: 300;
-      line-height: 1.85;
-      color: var(--mocha-light);
-      margin-bottom: 16px;
-    }
-
-    .about-values {
-      margin-top: 32px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-
-    .about-value {
-      padding: 20px 0;
-      border-top: 0.5px solid var(--border);
-    }
-
-    .about-value-label {
-      font-size: 10px;
-      font-weight: 300;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 6px;
-    }
-
-    .about-value-text {
-      font-family: var(--serif);
-      font-size: 15px;
-      font-style: italic;
-      color: var(--mocha);
-      line-height: 1.4;
-    }
-
-    /* ── Services ── */
-    .services {
-      background: var(--mocha);
-      padding: 96px 64px;
-    }
-
-    .services-header {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      margin-bottom: 60px;
-    }
-
-    .services-header-left {}
-
-    .section-label-light {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 20px;
-    }
-
-    .section-label-light::before {
-      content: '';
-      display: block;
-      width: 24px;
-      height: 0.5px;
-      background: var(--gold);
-    }
-
-    .section-label-light-text {
-      font-size: 10px;
-      font-weight: 300;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-
-    .section-h2-light {
-      font-family: var(--serif);
-      font-size: clamp(32px, 3vw, 44px);
-      font-weight: 400;
-      line-height: 1.15;
-      color: var(--cream);
-    }
-
-    .section-h2-light em { font-style: italic; color: var(--gold); }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: rgba(255,255,255,0.08);
-    }
-
-    .service-card {
-      background: var(--mocha);
-      padding: 44px 36px;
-      position: relative;
-      transition: background 0.3s var(--ease);
-      cursor: pointer;
-    }
-
-    .service-card:hover { background: #3d3020; }
-
-    .service-num {
-      font-family: var(--serif);
-      font-size: 52px;
-      font-weight: 400;
-      color: rgba(196,160,106,0.2);
-      line-height: 1;
-      margin-bottom: 20px;
-      transition: color 0.3s;
-    }
-
-    .service-card:hover .service-num { color: rgba(196,160,106,0.5); }
-
-    .service-title {
-      font-family: var(--serif);
-      font-size: 22px;
-      font-weight: 400;
-      color: var(--cream);
-      margin-bottom: 14px;
-      line-height: 1.2;
-    }
-
-    .service-desc {
-      font-size: 13px;
-      font-weight: 300;
-      line-height: 1.75;
-      color: var(--mocha-light);
-      margin-bottom: 32px;
-    }
-
-    .service-includes {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-bottom: 36px;
-    }
-
-    .service-include-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 12px;
-      font-weight: 300;
-      color: rgba(196,160,106,0.7);
-    }
-
-    .service-include-item::before {
-      content: '';
-      display: block;
-      width: 16px;
-      height: 0.5px;
-      background: var(--gold);
-      opacity: 0.5;
-      flex-shrink: 0;
-    }
-
-    .service-link {
-      font-size: 10px;
-      font-weight: 300;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--gold);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      transition: gap 0.2s;
-    }
-
-    .service-card:hover .service-link { gap: 16px; }
-
-    /* ── Process ── */
-    .process {
-      padding: 96px 64px;
-      background: var(--cream);
-    }
-
-    .process-header {
-      text-align: center;
-      margin-bottom: 64px;
-    }
-
-    .process-steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0;
-      position: relative;
-    }
-
-    .process-steps::before {
-      content: '';
-      position: absolute;
-      top: 28px;
-      left: calc(16.66% + 20px);
-      right: calc(16.66% + 20px);
-      height: 0.5px;
-      background: var(--gold-pale);
-    }
-
-    .process-step {
-      text-align: center;
-      padding: 0 32px;
-    }
-
-    .step-circle {
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      border: 0.5px solid var(--gold);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 28px;
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: 20px;
-      color: var(--gold);
-      background: var(--cream);
-      position: relative;
-      z-index: 1;
-    }
-
-    .step-title {
-      font-family: var(--serif);
-      font-size: 20px;
-      font-weight: 400;
-      color: var(--mocha);
-      margin-bottom: 12px;
-    }
-
-    .step-desc {
-      font-size: 13px;
-      font-weight: 300;
-      line-height: 1.75;
-      color: var(--mocha-light);
-    }
-
-    /* ── Portfolio ── */
-    .portfolio {
-      padding: 96px 64px;
-      background: var(--cream-mid);
-    }
-
-    .portfolio-header {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      margin-bottom: 48px;
-    }
-
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: auto auto;
-      gap: 6px;
-    }
-
-    .portfolio-item {
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-      background: var(--cream-dark);
-    }
-
-    .portfolio-item:first-child {
-      grid-column: 1 / 2;
-      grid-row: 1 / 3;
-    }
-
-    .portfolio-img {
-      aspect-ratio: 4/5;
-      transition: transform 0.6s var(--ease);
-    }
-
-    .portfolio-item:first-child .portfolio-img {
-      aspect-ratio: 4/7;
-    }
-
-    .portfolio-img-ph {
-      width: 100%;
-      height: 100%;
-      min-height: 200px;
-      display: flex;
-      align-items: flex-end;
-      padding: 20px;
-    }
-
-    .portfolio-item:hover .portfolio-img { transform: scale(1.04); }
-
-    .portfolio-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(45,34,24,0.75) 0%, transparent 50%);
-      opacity: 0;
-      transition: opacity 0.4s var(--ease);
-      display: flex;
-      align-items: flex-end;
-      padding: 24px;
-    }
-
-    .portfolio-item:hover .portfolio-overlay { opacity: 1; }
-
-    .portfolio-label {
-      color: var(--cream);
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: 16px;
-    }
-
-    .portfolio-type {
-      font-size: 10px;
-      font-weight: 300;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--gold-light);
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    /* ── Testimonials ── */
-    .testimonials {
-      padding: 96px 64px;
-      background: var(--cream);
-    }
-
-    .testimonials-header {
-      text-align: center;
-      margin-bottom: 56px;
-    }
-
-    .testi-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .testi-card {
-      background: var(--white);
-      border: 0.5px solid var(--border);
-      padding: 36px 32px;
-    }
-
-    .testi-stars {
-      display: flex;
-      gap: 3px;
-      margin-bottom: 20px;
-    }
-
-    .testi-star {
-      width: 12px;
-      height: 12px;
-      background: var(--gold);
-      clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-    }
-
-    .testi-quote {
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 1.65;
-      color: var(--mocha);
-      margin-bottom: 24px;
-    }
-
-    .testi-author {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      border-top: 0.5px solid var(--border);
-      padding-top: 20px;
-    }
-
-    .testi-avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: var(--cream-mid);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: 15px;
-      color: var(--gold);
-      flex-shrink: 0;
-    }
-
-    .testi-name {
-      font-size: 13px;
-      font-weight: 400;
-      color: var(--mocha);
-    }
-
-    .testi-event {
-      font-size: 11px;
-      font-weight: 300;
-      letter-spacing: 1px;
-      color: var(--mocha-light);
-    }
-
     /* ── CTA / Inquiry ── */
     .cta-section {
       background: var(--mocha);
@@ -823,8 +344,6 @@
       gap: 80px;
       align-items: center;
     }
-
-    .cta-left {}
 
     .cta-h2 {
       font-family: var(--serif);
@@ -866,6 +385,29 @@
       border-radius: 50%;
       border: 0.5px solid var(--gold);
       flex-shrink: 0;
+    }
+
+    .section-label-light {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .section-label-light::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 0.5px;
+      background: var(--gold);
+    }
+
+    .section-label-light-text {
+      font-size: 10px;
+      font-weight: 300;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
     }
 
     /* ── Inquiry Form ── */
@@ -956,8 +498,6 @@
       padding-bottom: 48px;
       border-bottom: 0.5px solid rgba(255,255,255,0.07);
     }
-
-    .footer-brand {}
 
     .footer-logo-mark {
       font-family: var(--serif);
@@ -1056,13 +596,6 @@
       opacity: 0.7;
     }
 
-    /* ── Portfolio placeholder fills ── */
-    .pf-1 { background: linear-gradient(145deg, #d0bfa8, #c4ad92); min-height: 380px; }
-    .pf-2 { background: linear-gradient(145deg, #c8b498, #bca882); }
-    .pf-3 { background: linear-gradient(145deg, #d8caB8, #c8b8a4); }
-    .pf-4 { background: linear-gradient(145deg, #c0ae96, #b4a28a); }
-    .pf-5 { background: linear-gradient(145deg, #cebfa8, #c2b094); }
-
     /* ── Responsive ── */
     @media (max-width: 900px) {
       nav { padding: 0 24px; }
@@ -1074,28 +607,6 @@
       .hero-text { padding: 48px 24px; }
       .hero-imgs { min-height: 320px; display: flex; }
       .hero-img-sm:last-child { display: none; }
-
-      .about { grid-template-columns: 1fr; }
-      .about-img-side { min-height: 300px; }
-      .about-text { padding: 48px 24px; }
-      .about-values { grid-template-columns: 1fr; }
-
-      .services { padding: 64px 24px; }
-      .services-header { flex-direction: column; align-items: flex-start; gap: 20px; }
-      .services-grid { grid-template-columns: 1fr; }
-
-      .process { padding: 64px 24px; }
-      .process-steps { grid-template-columns: 1fr; gap: 40px; }
-      .process-steps::before { display: none; }
-
-      .portfolio { padding: 64px 24px; }
-      .portfolio-header { flex-direction: column; align-items: flex-start; gap: 20px; }
-      .portfolio-grid { grid-template-columns: 1fr 1fr; }
-      .portfolio-item:first-child { grid-column: 1 / 3; grid-row: 1; }
-      .portfolio-item:first-child .portfolio-img { aspect-ratio: 16/9; }
-
-      .testimonials { padding: 64px 24px; }
-      .testi-grid { grid-template-columns: 1fr; }
 
       .cta-section { grid-template-columns: 1fr; padding: 64px 24px; gap: 48px; }
 
@@ -1114,15 +625,15 @@
 
   <!-- Navigation -->
   <nav id="main-nav">
-    <a href="#" class="nav-logo" aria-label="K Events Inc. Home">
+    <a href="/" class="nav-logo" aria-label="K Events Inc. Home">
       <span class="nav-logo-mark">K</span>
       <span class="nav-logo-text">Events Inc.</span>
     </a>
     <ul class="nav-links">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#portfolio">Portfolio</a></li>
-      <li><a href="#about">Our Story</a></li>
-      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="/services.html">Services</a></li>
+      <li><a href="/portfolio.html">Portfolio</a></li>
+      <li><a href="/about.html">Our Story</a></li>
+      <li><a href="/reviews.html">Reviews</a></li>
     </ul>
     <a href="#inquire" class="nav-cta">Let&rsquo;s Connect</a>
     <div class="nav-mobile-toggle" id="mobile-toggle" aria-label="Menu">
@@ -1146,7 +657,7 @@
       </p>
       <div class="hero-actions">
         <a href="#inquire" class="btn-primary">Start Your Story</a>
-        <a href="#portfolio" class="btn-secondary">View Our Work</a>
+        <a href="/portfolio.html" class="btn-secondary">View Our Work</a>
       </div>
     </div>
     <div class="hero-imgs" aria-hidden="true">
@@ -1178,244 +689,6 @@
       <span class="strip-item">Now Booking 2026 &amp; 2027 <span class="strip-dot"></span></span>
     </div>
   </div>
-
-  <!-- About -->
-  <section class="about" id="about" aria-label="About K Events Inc">
-    <div class="about-img-side">
-      <div class="about-img-main" style="min-height:520px;">
-        <!-- Replace with <img src="your-team-photo.jpg" alt="The K Events team" /> -->
-      </div>
-    </div>
-    <div class="about-text">
-      <div class="section-label">
-        <span class="section-label-text">Our Philosophy</span>
-      </div>
-      <h2 class="section-h2">Love is in<br />the <em>details.</em></h2>
-      <p class="about-body">
-        At K Events Inc., we believe your wedding day should feel exactly like you imagined — effortless, beautiful, and full of meaning. Our role is to hold every thread so you can be fully present with the people you love.
-      </p>
-      <p class="about-body">
-        From intimate ceremonies to multi-day celebrations, we bring warmth, creativity, and meticulous care to every event we plan across the Greater Toronto Area.
-      </p>
-      <div class="about-values">
-        <div class="about-value">
-          <div class="about-value-label">Our Approach</div>
-          <div class="about-value-text">Personalized, end-to-end service</div>
-        </div>
-        <div class="about-value">
-          <div class="about-value-label">Our Specialty</div>
-          <div class="about-value-text">Luxury &amp; inter-faith weddings</div>
-        </div>
-        <div class="about-value">
-          <div class="about-value-label">Our Promise</div>
-          <div class="about-value-text">Calm, joy &amp; zero stress</div>
-        </div>
-        <div class="about-value">
-          <div class="about-value-label">Our Home</div>
-          <div class="about-value-text">Greater Toronto Area</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services -->
-  <section class="services" id="services" aria-label="Our Services">
-    <div class="services-header">
-      <div class="services-header-left">
-        <div class="section-label-light">
-          <span class="section-label-light-text">What We Offer</span>
-        </div>
-        <h2 class="section-h2-light">Our <em>Services</em></h2>
-      </div>
-      <a href="#inquire" class="btn-primary" style="flex-shrink:0;">Inquire Now</a>
-    </div>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-num">01</div>
-        <h3 class="service-title">Full Year Planning</h3>
-        <p class="service-desc">Our most comprehensive experience — 12+ months of end-to-end planning, design, and coordination tailored entirely to your vision.</p>
-        <div class="service-includes">
-          <span class="service-include-item">Venue selection &amp; vendor management</span>
-          <span class="service-include-item">Full design concept &amp; mood boarding</span>
-          <span class="service-include-item">Budget management &amp; timeline</span>
-          <span class="service-include-item">Day-of execution &amp; coordination</span>
-        </div>
-        <a href="#inquire" class="service-link">Learn More &rarr;</a>
-      </div>
-      <div class="service-card">
-        <div class="service-num">02</div>
-        <h3 class="service-title">Partial Planning</h3>
-        <p class="service-desc">Already started? We step in wherever you are and take it from there — filling gaps, connecting the dots, and making sure nothing falls through.</p>
-        <div class="service-includes">
-          <span class="service-include-item">Vendor review &amp; gap analysis</span>
-          <span class="service-include-item">Timeline &amp; logistics coordination</span>
-          <span class="service-include-item">Design review &amp; refinement</span>
-          <span class="service-include-item">Full day-of support</span>
-        </div>
-        <a href="#inquire" class="service-link">Learn More &rarr;</a>
-      </div>
-      <div class="service-card">
-        <div class="service-num">03</div>
-        <h3 class="service-title">Day-Of Coordination</h3>
-        <p class="service-desc">You&rsquo;ve planned it all — we make sure it runs perfectly. Flawless execution from first look to final dance, while you live every moment.</p>
-        <div class="service-includes">
-          <span class="service-include-item">Pre-event vendor confirmation</span>
-          <span class="service-include-item">Full itinerary &amp; run-of-show</span>
-          <span class="service-include-item">On-site coordination team</span>
-          <span class="service-include-item">Problem-solving &amp; backup planning</span>
-        </div>
-        <a href="#inquire" class="service-link">Learn More &rarr;</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Process -->
-  <section class="process" aria-label="How we work">
-    <div class="process-header">
-      <div class="section-label" style="justify-content:center;">
-        <span class="section-label-text">How It Works</span>
-      </div>
-      <h2 class="section-h2" style="text-align:center;">Your journey with us</h2>
-    </div>
-    <div class="process-steps">
-      <div class="process-step">
-        <div class="step-circle">01</div>
-        <h3 class="step-title">Let&rsquo;s Connect</h3>
-        <p class="step-desc">We start with a discovery call to understand your vision, your people, and what matters most to you. No pressure — just a conversation.</p>
-      </div>
-      <div class="process-step">
-        <div class="step-circle">02</div>
-        <h3 class="step-title">Seal the Deal</h3>
-        <p class="step-desc">Once we&rsquo;re the right fit, we save your date with a signed contract and deposit. You&rsquo;ll receive a welcome package and a clear roadmap.</p>
-      </div>
-      <div class="process-step">
-        <div class="step-circle">03</div>
-        <h3 class="step-title">Your Big Day</h3>
-        <p class="step-desc">We handle every detail behind the scenes. You show up, you glow, you dance. We&rsquo;ll make sure it&rsquo;s everything you dreamed of.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Portfolio -->
-  <section class="portfolio" id="portfolio" aria-label="Our Work">
-    <div class="portfolio-header">
-      <div>
-        <div class="section-label">
-          <span class="section-label-text">Our Work</span>
-        </div>
-        <h2 class="section-h2">Recent <em>Love Stories</em></h2>
-      </div>
-      <a href="https://www.instagram.com/keventsinc/" target="_blank" rel="noopener" class="btn-secondary" style="color:var(--mocha-light);border-color:var(--mocha-light);">View on Instagram</a>
-    </div>
-    <div class="portfolio-grid">
-      <div class="portfolio-item">
-        <div class="portfolio-img pf-1 ph-1 portfolio-img-ph">
-          <!-- <img src="wedding-1.jpg" alt="Priya & Rohit Wedding" /> -->
-        </div>
-        <div class="portfolio-overlay">
-          <div>
-            <span class="portfolio-type">Full Planning</span>
-            <div class="portfolio-label">A &amp; S — Anand Karaj</div>
-          </div>
-        </div>
-      </div>
-      <div class="portfolio-item">
-        <div class="portfolio-img pf-2 portfolio-img-ph" style="min-height:200px;aspect-ratio:4/3;">
-          <!-- <img src="wedding-2.jpg" alt="Reception decor" /> -->
-        </div>
-        <div class="portfolio-overlay">
-          <div>
-            <span class="portfolio-type">Day-Of Coordination</span>
-            <div class="portfolio-label">M &amp; T — Grand Reception</div>
-          </div>
-        </div>
-      </div>
-      <div class="portfolio-item">
-        <div class="portfolio-img pf-3 portfolio-img-ph" style="min-height:200px;aspect-ratio:4/3;">
-          <!-- <img src="wedding-3.jpg" alt="Sangeet night" /> -->
-        </div>
-        <div class="portfolio-overlay">
-          <div>
-            <span class="portfolio-type">Full Planning</span>
-            <div class="portfolio-label">Y &amp; S — Sangeet Night</div>
-          </div>
-        </div>
-      </div>
-      <div class="portfolio-item">
-        <div class="portfolio-img pf-4 portfolio-img-ph" style="min-height:200px;aspect-ratio:4/3;">
-          <!-- <img src="wedding-4.jpg" alt="Inter-faith ceremony" /> -->
-        </div>
-        <div class="portfolio-overlay">
-          <div>
-            <span class="portfolio-type">Partial Planning</span>
-            <div class="portfolio-label">L &amp; H — Fusion Ceremony</div>
-          </div>
-        </div>
-      </div>
-      <div class="portfolio-item">
-        <div class="portfolio-img pf-5 portfolio-img-ph" style="min-height:200px;aspect-ratio:4/3;">
-          <!-- <img src="wedding-5.jpg" alt="Wedding reception" /> -->
-        </div>
-        <div class="portfolio-overlay">
-          <div>
-            <span class="portfolio-type">Full Planning</span>
-            <div class="portfolio-label">I &amp; S — The Grand Finale</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Testimonials -->
-  <section class="testimonials" id="testimonials" aria-label="Client Reviews">
-    <div class="testimonials-header">
-      <div class="section-label" style="justify-content:center;">
-        <span class="section-label-text">Client Love</span>
-      </div>
-      <h2 class="section-h2">What our couples say</h2>
-    </div>
-    <div class="testi-grid">
-      <div class="testi-card">
-        <div class="testi-stars">
-          <div class="testi-star"></div><div class="testi-star"></div><div class="testi-star"></div><div class="testi-star"></div><div class="testi-star"></div>
-        </div>
-        <blockquote class="testi-quote">"K Events made our wedding week feel completely effortless. Our families were so relaxed — they actually got to enjoy every moment. We couldn't have done it without them."</blockquote>
-        <div class="testi-author">
-          <div class="testi-avatar">A</div>
-          <div>
-            <div class="testi-name">Anisha &amp; Samir</div>
-            <div class="testi-event">Full Year Planning &mdash; 2024</div>
-          </div>
-        </div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">
-          <div class="testi-star"></div><div class="testi-star"></div><div class="testi-star"></div><div class="testi-star"></div><div class="testi-star"></div>
-        </div>
-        <blockquote class="testi-quote">"They took our vision and ran with it. Quick problem-solvers, incredibly organized, and they always met us with a smile. I would trust K Events to plan any event of mine."</blockquote>
-        <div class="testi-author">
-          <div class="testi-avatar">L</div>
-          <div>
-            <div class="testi-name">Leena &amp; Hitesh</div>
-            <div class="testi-event">Day-Of Coordination &mdash; 2024</div>
-          </div>
-        </div>
-      </div>
-      <div class="testi-card">
-        <div class="testi-stars">
-          <div class="testi-star"></div><div class="testi-star"></div><div class="testi-star"></div><div class="testi-star"></div><div class="testi-star"></div>
-        </div>
-        <blockquote class="testi-quote">"Our inter-faith ceremony was everything we hoped for. They blended both cultures so beautifully and kept everyone calm behind the scenes. Truly the best."</blockquote>
-        <div class="testi-author">
-          <div class="testi-avatar">M</div>
-          <div>
-            <div class="testi-name">Maya &amp; Tej</div>
-            <div class="testi-event">Full Year Planning &mdash; 2024</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- CTA / Inquiry Form -->
   <section class="cta-section" id="inquire" aria-label="Inquiry Form">
@@ -1496,17 +769,17 @@
       <div>
         <div class="footer-col-title">Services</div>
         <div class="footer-col-links">
-          <a href="#services">Full Year Planning</a>
-          <a href="#services">Partial Planning</a>
-          <a href="#services">Day-Of Coordination</a>
+          <a href="/services.html">Full Year Planning</a>
+          <a href="/services.html">Partial Planning</a>
+          <a href="/services.html">Day-Of Coordination</a>
         </div>
       </div>
       <div>
         <div class="footer-col-title">Company</div>
         <div class="footer-col-links">
-          <a href="#about">Our Story</a>
-          <a href="#portfolio">Portfolio</a>
-          <a href="#testimonials">Reviews</a>
+          <a href="/about.html">Our Story</a>
+          <a href="/portfolio.html">Portfolio</a>
+          <a href="/reviews.html">Reviews</a>
         </div>
       </div>
       <div>
@@ -1530,7 +803,6 @@
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 20);
     }, { passive: true });
-
   </script>
 
 <script>
