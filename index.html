@@ -190,16 +190,16 @@
     }
 
     .hero-eyebrow-text {
-      font-size: 10px;
-      font-weight: 300;
-      letter-spacing: 4px;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
       color: var(--gold);
     }
 
     .hero-h1 {
       font-family: var(--serif);
-      font-size: clamp(44px, 4.5vw, 64px);
+      font-size: clamp(3rem, 8vw, 6.5rem);
       font-weight: 400;
       line-height: 1.05;
       color: var(--mocha);
@@ -212,11 +212,11 @@
     }
 
     .hero-sub {
-      font-size: 15px;
+      font-size: 17px;
       font-weight: 300;
       line-height: 1.8;
-      color: var(--mocha-light);
-      max-width: 360px;
+      color: var(--mocha-mid);
+      max-width: 58ch;
       margin-bottom: 40px;
     }
 
@@ -338,7 +338,7 @@
     /* ── CTA / Inquiry ── */
     .cta-section {
       background: var(--mocha);
-      padding: 96px 64px;
+      padding: 140px 64px;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 80px;
@@ -347,20 +347,21 @@
 
     .cta-h2 {
       font-family: var(--serif);
-      font-size: clamp(32px, 3vw, 50px);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
       font-weight: 400;
-      line-height: 1.1;
+      line-height: 1.05;
       color: var(--cream);
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
 
     .cta-h2 em { font-style: italic; color: var(--gold); }
 
     .cta-body {
-      font-size: 14px;
+      font-size: 17px;
       font-weight: 300;
       line-height: 1.8;
       color: var(--mocha-light);
+      max-width: 58ch;
       margin-bottom: 32px;
     }
 
@@ -403,9 +404,9 @@
     }
 
     .section-label-light-text {
-      font-size: 10px;
-      font-weight: 300;
-      letter-spacing: 4px;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
       color: var(--gold);
     }
@@ -608,7 +609,7 @@
       .hero-imgs { min-height: 320px; display: flex; }
       .hero-img-sm:last-child { display: none; }
 
-      .cta-section { grid-template-columns: 1fr; padding: 64px 24px; gap: 48px; }
+      .cta-section { grid-template-columns: 1fr; padding: 80px 24px; gap: 48px; }
 
       .form-row { grid-template-columns: 1fr; }
 
@@ -648,7 +649,7 @@
       <h1 class="hero-h1">
         We plan,<br />
         so you can<br />
-        <em>be present.</em>
+        be <em>present.</em>
       </h1>
       <p class="hero-sub">
         K Events Inc. crafts luxury weddings and celebrations with warmth, precision, and every detail handled — so you and your loved ones can live in the moment.
@@ -692,9 +693,9 @@
   <section class="cta-section" id="inquire" aria-label="Inquiry Form">
     <div class="cta-left">
       <div class="section-label-light">
-        <span class="section-label-light-text">Get In Touch</span>
+        <span class="section-label-light-text">Inquire</span>
       </div>
-      <h2 class="cta-h2">Ready to start<br /><em>your story?</em></h2>
+      <h2 class="cta-h2">Ready to start<br />your <em>story?</em></h2>
       <p class="cta-body">We&rsquo;d love to hear about your day. Fill out the form and we&rsquo;ll be in touch within 48 hours to schedule your complimentary discovery call.</p>
       <div class="cta-contact-list">
         <div class="cta-contact-item">
