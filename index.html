@@ -363,6 +363,92 @@
     .gd-2 { background: linear-gradient(145deg, #d8cab8, #c8b8a4); }
     .gd-3 { background: linear-gradient(145deg, #c0ae96, #b4a28a); }
 
+    /* ── Perfect For You If ── */
+    .fit {
+      display: grid;
+      grid-template-columns: 45% 1fr;
+      gap: 80px;
+      align-items: center;
+      padding: 140px 64px;
+      background: var(--cream-mid);
+    }
+
+    .fit-img {
+      width: 100%;
+      aspect-ratio: 2 / 3;
+      object-fit: cover;
+      background: linear-gradient(160deg, #d4c5b0, #bfae96);
+    }
+
+    .fit-list {
+      margin-top: 48px;
+    }
+
+    .fit-item {
+      font-family: var(--serif);
+      font-size: clamp(20px, 2vw, 26px);
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--mocha);
+      padding: 28px 0;
+    }
+
+    .fit-item:first-child { padding-top: 0; }
+    .fit-item:last-child { padding-bottom: 0; }
+    .fit-item + .fit-item { border-top: 0.5px solid var(--gold); }
+
+    /* ── Love Notes ── */
+    .notes {
+      padding: 140px 64px;
+      background: var(--cream);
+    }
+
+    .notes-header { margin-bottom: 72px; }
+
+    .note-featured {
+      max-width: 880px;
+      margin-bottom: 80px;
+    }
+
+    .note-featured-quote {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(20px, 2vw, 24px);
+      font-weight: 400;
+      line-height: 1.65;
+      color: var(--mocha);
+      margin-bottom: 28px;
+    }
+
+    .note-attr {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .notes-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+    }
+
+    .note {
+      border-top: 0.5px solid var(--border);
+      padding-top: 32px;
+    }
+
+    .note-quote {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.7;
+      color: var(--mocha-mid);
+      margin-bottom: 20px;
+    }
+
     /* ── CTA / Inquiry ── */
     .cta-section {
       background: var(--mocha);
@@ -638,6 +724,13 @@
       .guide { padding: 80px 24px; }
       .guide-grid { grid-template-columns: 1fr; gap: 56px; }
 
+      .fit { grid-template-columns: 1fr; padding: 80px 24px; gap: 48px; }
+
+      .notes { padding: 80px 24px; }
+      .notes-header { margin-bottom: 48px; }
+      .note-featured { margin-bottom: 56px; }
+      .notes-grid { grid-template-columns: 1fr; gap: 48px; }
+
       .cta-section { grid-template-columns: 1fr; padding: 80px 24px; gap: 48px; }
 
       .form-row { grid-template-columns: 1fr; }
@@ -730,6 +823,53 @@
         </div>
         <div class="guide-name">Full Year Planning</div>
       </a>
+    </div>
+  </section>
+
+  <!-- Perfect For You If -->
+  <section class="fit" aria-label="Who we're perfect for">
+    <div class="fit-media">
+      <div class="fit-img">
+        <!-- Replace with <img src="couple.jpg" alt="A couple celebrating, fully present" /> -->
+      </div>
+    </div>
+    <div class="fit-text">
+      <div class="section-label">
+        <span class="section-label-text">The Right Fit</span>
+      </div>
+      <h2 class="section-h2">We&rsquo;re perfect for <em>you</em> if&hellip;</h2>
+      <div class="fit-list">
+        <p class="fit-item">You want to be fully present with your family, not managing vendors.</p>
+        <p class="fit-item">You want every vendor working from one detailed itinerary.</p>
+        <p class="fit-item">You&rsquo;re looking for end-to-end guidance that brings your exact vision to life.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Love Notes -->
+  <section class="notes" aria-label="Testimonials">
+    <div class="notes-header">
+      <div class="section-label">
+        <span class="section-label-text">Love Notes</span>
+      </div>
+      <h2 class="section-h2">Kind words from our <em>couples</em></h2>
+    </div>
+    <!-- TODO: replace with real client testimonials -->
+    <figure class="note-featured">
+      <blockquote class="note-featured-quote">
+        &ldquo;Placeholder testimonial — from our very first call to the last dance, the K Events team held every detail so we never had to think about a single one. Our families keep saying it was the most relaxed they&rsquo;ve ever seen a couple on their wedding day, and that is entirely because of them.&rdquo;
+      </blockquote>
+      <figcaption class="note-attr">&mdash; Priya &amp; Arjun, Full Year Planning</figcaption>
+    </figure>
+    <div class="notes-grid">
+      <figure class="note">
+        <blockquote class="note-quote">&ldquo;Placeholder testimonial — every vendor knew exactly where to be and when. We just got to enjoy it.&rdquo;</blockquote>
+        <figcaption class="note-attr">&mdash; Maya &amp; Tariq, Day-Of Coordination</figcaption>
+      </figure>
+      <figure class="note">
+        <blockquote class="note-quote">&ldquo;Placeholder testimonial — they stepped in halfway through and somehow made it feel effortless from that day on.&rdquo;</blockquote>
+        <figcaption class="note-attr">&mdash; Leah &amp; Hassan, Partial Planning</figcaption>
+      </figure>
     </div>
   </section>
 

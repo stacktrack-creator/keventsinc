@@ -89,11 +89,10 @@
     /* ── Process ── */
     .process { padding: 140px 64px; background: var(--cream); }
     .process-header { text-align: center; margin-bottom: 64px; }
-    .process-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; position: relative; }
-    .process-steps::before { content: ''; position: absolute; top: 28px; left: calc(16.66% + 20px); right: calc(16.66% + 20px); height: 0.5px; background: var(--gold-pale); }
+    .process-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
     .process-step { text-align: center; padding: 0 32px; }
-    .step-circle { width: 56px; height: 56px; border-radius: 50%; border: 0.5px solid var(--gold); display: flex; align-items: center; justify-content: center; margin: 0 auto 28px; font-family: var(--serif); font-style: italic; font-size: 20px; color: var(--gold); background: var(--cream); position: relative; z-index: 1; }
-    .step-title { font-family: var(--serif); font-size: 20px; font-weight: 400; color: var(--mocha); margin-bottom: 12px; }
+    .step-num { font-family: var(--serif); font-size: 140px; font-weight: 400; line-height: 0.8; color: var(--gold); opacity: 0.18; margin-bottom: -44px; user-select: none; }
+    .step-title { font-family: var(--serif); font-size: 24px; font-weight: 400; color: var(--mocha); margin-bottom: 12px; position: relative; z-index: 1; }
     .step-desc { font-size: 13px; font-weight: 300; line-height: 1.75; color: var(--mocha-light); }
 
     /* ── Footer ── */
@@ -124,8 +123,8 @@
       .package-row, .package-row:nth-child(even) { grid-template-columns: 1fr; gap: 32px; }
       .package-row:nth-child(even) .package-media { order: 0; }
       .process { padding: 80px 24px; }
-      .process-steps { grid-template-columns: 1fr; gap: 40px; }
-      .process-steps::before { display: none; }
+      .process-steps { grid-template-columns: 1fr; gap: 56px; }
+      .step-num { font-size: 100px; margin-bottom: -32px; }
       footer { padding: 48px 24px 24px; }
       .footer-top { grid-template-columns: 1fr; gap: 32px; }
       .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
@@ -232,17 +231,17 @@
     </div>
     <div class="process-steps">
       <div class="process-step">
-        <div class="step-circle">01</div>
+        <div class="step-num" aria-hidden="true">01</div>
         <h3 class="step-title">Let&rsquo;s Connect</h3>
         <p class="step-desc">We start with a discovery call to understand your vision, your people, and what matters most to you. No pressure — just a conversation.</p>
       </div>
       <div class="process-step">
-        <div class="step-circle">02</div>
-        <h3 class="step-title">Seal the Deal</h3>
+        <div class="step-num" aria-hidden="true">02</div>
+        <h3 class="step-title">Seal the Date</h3>
         <p class="step-desc">Once we&rsquo;re the right fit, we save your date with a signed contract and deposit. You&rsquo;ll receive a welcome package and a clear roadmap.</p>
       </div>
       <div class="process-step">
-        <div class="step-circle">03</div>
+        <div class="step-num" aria-hidden="true">03</div>
         <h3 class="step-title">Your Big Day</h3>
         <p class="step-desc">We handle every detail behind the scenes. You show up, you glow, you dance. We&rsquo;ll make sure it&rsquo;s everything you dreamed of.</p>
       </div>
