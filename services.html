@@ -34,16 +34,19 @@
     img { display: block; width: 100%; object-fit: cover; }
     a { text-decoration: none; color: inherit; }
     button { cursor: pointer; font-family: var(--sans); border: none; background: none; }
+    a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 1.5px solid var(--gold); outline-offset: 3px; }
 
     /* ── Navigation ── */
-    nav { position: sticky; top: 0; z-index: 100; background: var(--cream); border-bottom: 0.5px solid var(--border); padding: 0 48px; height: 72px; display: flex; align-items: center; justify-content: space-between; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); transition: box-shadow 0.3s var(--ease); }
+    nav { position: sticky; top: 0; z-index: 100; background: var(--cream); border-bottom: 0.5px solid var(--border); padding: 0 48px; height: 96px; display: flex; align-items: center; justify-content: space-between; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); transition: box-shadow 0.3s var(--ease); }
     nav.scrolled { box-shadow: 0 2px 24px rgba(45,34,24,0.07); }
     .nav-logo { display: flex; align-items: baseline; gap: 10px; }
     .nav-logo-mark { font-family: var(--serif); font-size: 28px; font-weight: 400; font-style: italic; color: var(--mocha); line-height: 1; }
     .nav-logo-text { font-size: 10px; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; color: var(--mocha-light); }
     .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
-    .nav-links a { font-size: 11px; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; color: var(--mocha-light); transition: color 0.2s; }
+    .nav-links a { position: relative; padding-bottom: 4px; font-size: 12px; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mocha-light); transition: color 0.2s; }
+    .nav-links a::after { content: ''; position: absolute; left: 0; bottom: 0; width: 100%; height: 1px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.3s var(--ease); }
     .nav-links a:hover { color: var(--mocha); }
+    .nav-links a:hover::after, .nav-links a:focus-visible::after { transform: scaleX(1); }
     .nav-cta { font-size: 11px; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; background: var(--mocha); color: var(--cream); padding: 13px 28px; transition: background 0.25s var(--ease), color 0.25s; }
     .nav-cta:hover { background: var(--gold); color: var(--mocha); }
     .nav-mobile-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
@@ -96,17 +99,16 @@
     .step-desc { font-size: 13px; font-weight: 300; line-height: 1.75; color: var(--mocha-light); }
 
     /* ── Footer ── */
-    footer { background: #1a1108; padding: 60px 64px 32px; }
-    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; padding-bottom: 48px; border-bottom: 0.5px solid rgba(255,255,255,0.07); }
-    .footer-logo-mark { font-family: var(--serif); font-size: 32px; font-weight: 400; font-style: italic; color: var(--cream); line-height: 1; margin-bottom: 6px; }
-    .footer-logo-sub { font-size: 10px; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; color: var(--mocha-light); margin-bottom: 20px; }
-    .footer-bio { font-size: 13px; font-weight: 300; line-height: 1.75; color: var(--mocha-light); max-width: 240px; }
-    .footer-ig { display: flex; align-items: center; gap: 8px; margin-top: 20px; font-size: 12px; font-weight: 300; color: var(--gold); letter-spacing: 1px; transition: color 0.2s; }
-    .footer-ig:hover { color: var(--gold-light); }
-    .footer-ig-icon { width: 14px; height: 14px; border: 0.5px solid var(--gold); border-radius: 3px; display: flex; align-items: center; justify-content: center; }
-    .footer-col-title { font-size: 10px; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
-    .footer-col-links { display: flex; flex-direction: column; gap: 12px; }
-    .footer-col-links a { font-size: 13px; font-weight: 300; color: var(--mocha-light); transition: color 0.2s; }
+    footer { background: #1a1108; padding: 100px 64px 40px; }
+    .footer-cta { display: flex; align-items: flex-end; justify-content: space-between; gap: 40px; flex-wrap: wrap; padding-bottom: 64px; margin-bottom: 64px; border-bottom: 0.5px solid rgba(255,255,255,0.07); }
+    .footer-cta-line { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 400; line-height: 1.1; color: var(--cream); max-width: 18ch; }
+    .footer-cta-line em { font-style: italic; color: var(--gold); }
+    .footer-cta-link { display: inline-block; font-size: 11px; font-weight: 400; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); padding-bottom: 6px; border-bottom: 0.5px solid var(--gold); transition: color 0.2s, border-color 0.2s; }
+    .footer-cta-link:hover { color: var(--gold-light); border-color: var(--gold-light); }
+    .footer-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; margin-bottom: 80px; }
+    .footer-col-title { font-size: 11px; font-weight: 400; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
+    .footer-col-links { display: flex; flex-direction: column; gap: 10px; }
+    .footer-col-links a, .footer-col-text { font-size: 14px; font-weight: 300; color: var(--mocha-light); transition: color 0.2s; }
     .footer-col-links a:hover { color: var(--cream); }
     .footer-bottom { display: flex; align-items: center; justify-content: space-between; }
     .footer-copy { font-size: 11px; font-weight: 300; color: rgba(138,114,96,0.6); letter-spacing: 1px; }
@@ -125,8 +127,9 @@
       .process { padding: 80px 24px; }
       .process-steps { grid-template-columns: 1fr; gap: 56px; }
       .step-num { font-size: 100px; margin-bottom: -32px; }
-      footer { padding: 48px 24px 24px; }
-      .footer-top { grid-template-columns: 1fr; gap: 32px; }
+      footer { padding: 80px 24px 32px; }
+      .footer-cta { padding-bottom: 48px; margin-bottom: 48px; }
+      .footer-cols { grid-template-columns: 1fr; gap: 36px; margin-bottom: 56px; }
       .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
     }
   </style>
@@ -156,7 +159,7 @@
         <div class="section-label-light">
           <span class="section-label-light-text">The Services</span>
         </div>
-        <h2 class="section-h2-light">Our <em>Services</em></h2>
+        <h1 class="section-h2-light">Our <em>Services</em></h1>
       </div>
       <a href="/#inquiry" class="btn-primary" style="flex-shrink:0;">Inquire Now</a>
     </div>
@@ -169,7 +172,7 @@
         </div>
         <div class="package-text">
           <div class="package-vol">Vol. 1</div>
-          <h3 class="package-title">Day-Of Coordination</h3>
+          <h2 class="package-title">Day-Of Coordination</h2>
           <p class="package-desc">You&rsquo;ve planned it all — we make sure it runs perfectly. Flawless execution from first look to final dance, while you live every moment.</p>
           <div class="package-includes">
             <span class="package-include-item">Pre-event vendor confirmation</span>
@@ -188,7 +191,7 @@
         </div>
         <div class="package-text">
           <div class="package-vol">Vol. 2</div>
-          <h3 class="package-title">Partial Planning</h3>
+          <h2 class="package-title">Partial Planning</h2>
           <p class="package-desc">Already started? We step in wherever you are and take it from there — filling gaps, connecting the dots, and making sure nothing falls through.</p>
           <div class="package-includes">
             <span class="package-include-item">Vendor review &amp; gap analysis</span>
@@ -207,7 +210,7 @@
         </div>
         <div class="package-text">
           <div class="package-vol">Vol. 3</div>
-          <h3 class="package-title">Full Year Planning</h3>
+          <h2 class="package-title">Full Year Planning</h2>
           <p class="package-desc">Our most comprehensive experience — 12+ months of end-to-end planning, design, and coordination tailored entirely to your vision.</p>
           <div class="package-includes">
             <span class="package-include-item">Venue selection &amp; vendor management</span>
@@ -250,39 +253,29 @@
 
   <!-- Footer -->
   <footer>
-    <div class="footer-top">
-      <div class="footer-brand">
-        <div class="footer-logo-mark">K</div>
-        <div class="footer-logo-sub">Events Inc.</div>
-        <p class="footer-bio">Luxury wedding planning &amp; coordination for couples who want every moment to feel exactly right. Based in Toronto, serving the GTA &amp; beyond.</p>
-        <a href="https://www.instagram.com/keventsinc/" target="_blank" rel="noopener" class="footer-ig">
-          <span class="footer-ig-icon">
-            <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-          </span>
-          @keventsinc
-        </a>
-      </div>
+    <div class="footer-cta">
+      <p class="footer-cta-line">Ready to start planning your <em>special</em> day?</p>
+      <a href="/#inquiry" class="footer-cta-link">Inquire &rarr;</a>
+    </div>
+    <div class="footer-cols">
       <div>
-        <div class="footer-col-title">Services</div>
+        <div class="footer-col-title">Location</div>
         <div class="footer-col-links">
-          <a href="/services.html">Full Year Planning</a>
-          <a href="/services.html">Partial Planning</a>
-          <a href="/services.html">Day-Of Coordination</a>
-        </div>
-      </div>
-      <div>
-        <div class="footer-col-title">Company</div>
-        <div class="footer-col-links">
-          <a href="/about.html">About</a>
-          <a href="/portfolio.html">Portfolio</a>
+          <span class="footer-col-text">Toronto &amp; GTA</span>
+          <span class="footer-col-text">Serving the GTA &amp; beyond</span>
         </div>
       </div>
       <div>
         <div class="footer-col-title">Contact</div>
         <div class="footer-col-links">
-          <a href="/#inquiry">Inquire</a>
-          <a href="mailto:hello@keventsinc.com">Email Us</a>
-          <a href="https://www.instagram.com/keventsinc/" target="_blank" rel="noopener">Instagram</a>
+          <a href="mailto:hello@keventsinc.com">hello@keventsinc.com</a>
+          <a href="/#inquiry">Inquiry form</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Instagram</div>
+        <div class="footer-col-links">
+          <a href="https://www.instagram.com/keventsinc/" target="_blank" rel="noopener">@keventsinc</a>
         </div>
       </div>
     </div>
