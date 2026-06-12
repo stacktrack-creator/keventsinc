@@ -60,12 +60,12 @@
     /* ── Announcement Bar ── */
     .announce {
       background: var(--mocha);
-      color: var(--gold-pale);
+      color: var(--cream);
       text-align: center;
       padding: 10px 24px;
       font-size: 11px;
       font-weight: 300;
-      letter-spacing: 3px;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
     }
 
@@ -161,40 +161,23 @@
 
     /* ── Hero ── */
     .hero {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
       min-height: calc(100vh - 112px);
-    }
-
-    .hero-text {
-      padding: 72px 64px;
       display: flex;
       flex-direction: column;
+      align-items: center;
       justify-content: center;
+      text-align: center;
+      padding: 140px 24px;
       background: var(--cream);
     }
 
     .hero-eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 28px;
-    }
-
-    .hero-eyebrow::before {
-      content: '';
-      display: block;
-      width: 32px;
-      height: 0.5px;
-      background: var(--gold);
-    }
-
-    .hero-eyebrow-text {
       font-size: 11px;
       font-weight: 400;
       letter-spacing: 0.25em;
       text-transform: uppercase;
       color: var(--gold);
+      margin-bottom: 36px;
     }
 
     .hero-h1 {
@@ -203,7 +186,7 @@
       font-weight: 400;
       line-height: 1.05;
       color: var(--mocha);
-      margin-bottom: 28px;
+      margin-bottom: 36px;
     }
 
     .hero-h1 em {
@@ -216,14 +199,15 @@
       font-weight: 300;
       line-height: 1.8;
       color: var(--mocha-mid);
-      max-width: 58ch;
-      margin-bottom: 40px;
+      max-width: 52ch;
+      margin: 0 auto 48px;
     }
 
     .hero-actions {
       display: flex;
       align-items: center;
-      gap: 24px;
+      justify-content: center;
+      gap: 32px;
       flex-wrap: wrap;
     }
 
@@ -254,59 +238,32 @@
 
     .btn-secondary:hover { color: var(--mocha); border-color: var(--mocha); }
 
-    .hero-imgs {
-      display: grid;
-      grid-template-rows: 60% 40%;
-      grid-template-columns: 1fr 1fr;
-      gap: 4px;
-      background: var(--cream-dark);
-      overflow: hidden;
-    }
-
-    .hero-img-main {
-      grid-row: 1 / 3;
-      grid-column: 1;
-      background: var(--cream-mid);
-      min-height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--gold-light);
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: 13px;
-      overflow: hidden;
-    }
-
-    .hero-img-sm {
-      background: var(--cream-dark);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--gold-light);
-      font-family: var(--serif);
-      font-style: italic;
-      font-size: 11px;
-      overflow: hidden;
-    }
-
-    /* placeholder gradients for demo */
-    .ph-1 { background: linear-gradient(145deg, #d4c5b0, #e8ddd0); }
-    .ph-2 { background: linear-gradient(145deg, #c8b89a, #ddd0bc); }
-    .ph-3 { background: linear-gradient(145deg, #b8a48a, #cfc0a8); }
-
     /* ── Marquee Strip ── */
-    .strip {
-      background: var(--gold);
-      padding: 13px 0;
+    .marquee {
+      background: var(--cream);
+      border-top: 0.5px solid var(--border-light);
+      border-bottom: 0.5px solid var(--border-light);
+      padding: 26px 0;
       overflow: hidden;
       white-space: nowrap;
     }
 
-    .strip-track {
+    .marquee-track {
       display: inline-flex;
-      gap: 0;
-      animation: marquee 28s linear infinite;
+      animation: marquee 36s linear infinite;
+    }
+
+    .marquee:hover .marquee-track {
+      animation-play-state: paused;
+    }
+
+    .marquee-content {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 1;
+      color: var(--gold);
     }
 
     @keyframes marquee {
@@ -314,25 +271,9 @@
       to   { transform: translateX(-50%); }
     }
 
-    .strip-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 28px;
-      padding: 0 28px;
-      font-size: 10px;
-      font-weight: 300;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--mocha);
-    }
-
-    .strip-dot {
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: var(--mocha);
-      opacity: 0.4;
-      flex-shrink: 0;
+    @media (prefers-reduced-motion: reduce) {
+      .marquee-track { animation: none; }
+      .marquee-content + .marquee-content { display: none; }
     }
 
     /* ── CTA / Inquiry ── */
@@ -604,10 +545,8 @@
       .nav-links, .nav-cta { display: none; }
       .nav-mobile-toggle { display: flex; }
 
-      .hero { grid-template-columns: 1fr; }
-      .hero-text { padding: 48px 24px; }
-      .hero-imgs { min-height: 320px; display: flex; }
-      .hero-img-sm:last-child { display: none; }
+      .hero { min-height: auto; padding: 80px 24px; }
+      .marquee-content { font-size: 20px; }
 
       .cta-section { grid-template-columns: 1fr; padding: 80px 24px; gap: 48px; }
 
@@ -634,7 +573,7 @@
       <li><a href="/portfolio.html">Portfolio</a></li>
       <li><a href="/about.html">About</a></li>
     </ul>
-    <a href="#inquire" class="nav-cta">Let&rsquo;s Connect</a>
+    <a href="#inquiry" class="nav-cta">Let&rsquo;s Connect</a>
     <div class="nav-mobile-toggle" id="mobile-toggle" aria-label="Menu">
       <span></span><span></span><span></span>
     </div>
@@ -642,55 +581,31 @@
 
   <!-- Hero -->
   <section class="hero" aria-label="Welcome">
-    <div class="hero-text">
-      <div class="hero-eyebrow">
-        <span class="hero-eyebrow-text">GTA Wedding Planner</span>
-      </div>
-      <h1 class="hero-h1">
-        We plan,<br />
-        so you can<br />
-        be <em>present.</em>
-      </h1>
-      <p class="hero-sub">
-        K Events Inc. crafts luxury weddings and celebrations with warmth, precision, and every detail handled — so you and your loved ones can live in the moment.
-      </p>
-      <div class="hero-actions">
-        <a href="#inquire" class="btn-primary">Start Your Story</a>
-        <a href="/portfolio.html" class="btn-secondary">View Our Work</a>
-      </div>
-    </div>
-    <div class="hero-imgs" aria-hidden="true">
-      <div class="hero-img-main ph-1">
-        <!-- Replace with <img src="your-hero-photo.jpg" alt="Wedding by K Events Inc" /> -->
-      </div>
-      <div class="hero-img-sm ph-2"></div>
-      <div class="hero-img-sm ph-3"></div>
+    <p class="hero-eyebrow">GTA Luxury Wedding Planning</p>
+    <h1 class="hero-h1">
+      We plan, so you<br />
+      can be <em>present.</em>
+    </h1>
+    <p class="hero-sub">
+      Luxury weddings and celebrations across the GTA, planned with warmth and precision so you can live every moment.
+    </p>
+    <div class="hero-actions">
+      <a href="#inquiry" class="btn-primary">Inquire</a>
+      <a href="/services.html" class="btn-secondary">Explore Services &rarr;</a>
     </div>
   </section>
 
   <!-- Marquee Strip -->
-  <div class="strip" aria-hidden="true">
-    <div class="strip-track">
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
       <!-- Duplicated for seamless loop -->
-      <span class="strip-item">Full Year Planning <span class="strip-dot"></span></span>
-      <span class="strip-item">Partial Planning <span class="strip-dot"></span></span>
-      <span class="strip-item">Day-Of Coordination <span class="strip-dot"></span></span>
-      <span class="strip-item">South Asian Weddings <span class="strip-dot"></span></span>
-      <span class="strip-item">Inter-Faith Ceremonies <span class="strip-dot"></span></span>
-      <span class="strip-item">GTA &amp; Beyond <span class="strip-dot"></span></span>
-      <span class="strip-item">Now Booking 2026 &amp; 2027 <span class="strip-dot"></span></span>
-      <span class="strip-item">Full Year Planning <span class="strip-dot"></span></span>
-      <span class="strip-item">Partial Planning <span class="strip-dot"></span></span>
-      <span class="strip-item">Day-Of Coordination <span class="strip-dot"></span></span>
-      <span class="strip-item">South Asian Weddings <span class="strip-dot"></span></span>
-      <span class="strip-item">Inter-Faith Ceremonies <span class="strip-dot"></span></span>
-      <span class="strip-item">GTA &amp; Beyond <span class="strip-dot"></span></span>
-      <span class="strip-item">Now Booking 2026 &amp; 2027 <span class="strip-dot"></span></span>
+      <span class="marquee-content">love is in the details &mdash;&nbsp;love is in the details &mdash;&nbsp;love is in the details &mdash;&nbsp;love is in the details &mdash;&nbsp;love is in the details &mdash;&nbsp;love is in the details &mdash;&nbsp;love is in the details &mdash;&nbsp;love is in the details &mdash;&nbsp;</span>
+      <span class="marquee-content">love is in the details &mdash;&nbsp;love is in the details &mdash;&nbsp;love is in the details &mdash;&nbsp;love is in the details &mdash;&nbsp;love is in the details &mdash;&nbsp;love is in the details &mdash;&nbsp;love is in the details &mdash;&nbsp;love is in the details &mdash;&nbsp;</span>
     </div>
   </div>
 
   <!-- CTA / Inquiry Form -->
-  <section class="cta-section" id="inquire" aria-label="Inquiry Form">
+  <section class="cta-section" id="inquiry" aria-label="Inquiry Form">
     <div class="cta-left">
       <div class="section-label-light">
         <span class="section-label-light-text">Inquire</span>
@@ -783,7 +698,7 @@
       <div>
         <div class="footer-col-title">Contact</div>
         <div class="footer-col-links">
-          <a href="#inquire">Inquire</a>
+          <a href="#inquiry">Inquire</a>
           <a href="mailto:hello@keventsinc.com">Email Us</a>
           <a href="https://www.instagram.com/keventsinc/" target="_blank" rel="noopener">Instagram</a>
         </div>
