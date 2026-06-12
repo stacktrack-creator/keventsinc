@@ -276,6 +276,93 @@
       .marquee-content + .marquee-content { display: none; }
     }
 
+    /* ── Services Guide ── */
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 0.5px;
+      background: var(--gold);
+    }
+
+    .section-label-text {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .section-h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 400;
+      line-height: 1.05;
+      color: var(--mocha);
+    }
+
+    .section-h2 em { font-style: italic; color: var(--gold); }
+
+    .guide {
+      padding: 140px 64px;
+      background: var(--cream);
+    }
+
+    .guide-header { margin-bottom: 72px; }
+
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 48px;
+    }
+
+    .guide-card { display: block; }
+
+    .guide-vol {
+      font-family: var(--serif);
+      font-size: clamp(28px, 3vw, 44px);
+      font-weight: 400;
+      line-height: 1;
+      color: var(--mocha);
+      margin-bottom: 24px;
+    }
+
+    .guide-vol em { font-style: italic; color: var(--gold); }
+
+    .guide-frame {
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .guide-img {
+      width: 100%;
+      aspect-ratio: 2 / 3;
+      object-fit: cover;
+      transition: transform 0.6s var(--ease);
+    }
+
+    .guide-card:hover .guide-img { transform: scale(1.03); }
+
+    .guide-name {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--mocha-mid);
+    }
+
+    /* placeholder gradients — swap for final photography */
+    .gd-1 { background: linear-gradient(145deg, #d0bfa8, #c4ad92); }
+    .gd-2 { background: linear-gradient(145deg, #d8cab8, #c8b8a4); }
+    .gd-3 { background: linear-gradient(145deg, #c0ae96, #b4a28a); }
+
     /* ── CTA / Inquiry ── */
     .cta-section {
       background: var(--mocha);
@@ -548,6 +635,9 @@
       .hero { min-height: auto; padding: 80px 24px; }
       .marquee-content { font-size: 20px; }
 
+      .guide { padding: 80px 24px; }
+      .guide-grid { grid-template-columns: 1fr; gap: 56px; }
+
       .cta-section { grid-template-columns: 1fr; padding: 80px 24px; gap: 48px; }
 
       .form-row { grid-template-columns: 1fr; }
@@ -603,6 +693,45 @@
       <span class="marquee-content">love is in the details &mdash;&nbsp;love is in the details &mdash;&nbsp;love is in the details &mdash;&nbsp;love is in the details &mdash;&nbsp;love is in the details &mdash;&nbsp;love is in the details &mdash;&nbsp;love is in the details &mdash;&nbsp;love is in the details &mdash;&nbsp;</span>
     </div>
   </div>
+
+  <!-- Services Guide -->
+  <section class="guide" aria-label="Services Guide">
+    <div class="guide-header">
+      <div class="section-label">
+        <span class="section-label-text">The Services Guide</span>
+      </div>
+      <h2 class="section-h2">Three ways to <em>begin</em></h2>
+    </div>
+    <div class="guide-grid">
+      <a href="/services.html" class="guide-card">
+        <div class="guide-vol">Vol. <em>1</em></div>
+        <div class="guide-frame">
+          <div class="guide-img gd-1">
+            <!-- Replace with <img src="day-of.jpg" alt="Day-Of Coordination" /> -->
+          </div>
+        </div>
+        <div class="guide-name">Day-Of Coordination</div>
+      </a>
+      <a href="/services.html" class="guide-card">
+        <div class="guide-vol">Vol. <em>2</em></div>
+        <div class="guide-frame">
+          <div class="guide-img gd-2">
+            <!-- Replace with <img src="partial.jpg" alt="Partial Planning" /> -->
+          </div>
+        </div>
+        <div class="guide-name">Partial Planning</div>
+      </a>
+      <a href="/services.html" class="guide-card">
+        <div class="guide-vol">Vol. <em>3</em></div>
+        <div class="guide-frame">
+          <div class="guide-img gd-3">
+            <!-- Replace with <img src="full-year.jpg" alt="Full Year Planning" /> -->
+          </div>
+        </div>
+        <div class="guide-name">Full Year Planning</div>
+      </a>
+    </div>
+  </section>
 
   <!-- CTA / Inquiry Form -->
   <section class="cta-section" id="inquiry" aria-label="Inquiry Form">
