@@ -21,6 +21,7 @@
       --gold:        #C4A06A;
       --gold-light:  #D4B888;
       --gold-pale:   #EDD9AF;
+      --gold-deep:   #A37E48;
       --white:       #FFFFFF;
       --border:      rgba(45,34,24,0.12);
       --border-light:rgba(45,34,24,0.07);
@@ -37,8 +38,9 @@
     a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 1.5px solid var(--gold); outline-offset: 3px; }
 
     /* ── Navigation ── */
-    nav { position: sticky; top: 0; z-index: 100; background: var(--cream); border-bottom: 0.5px solid var(--border); padding: 0 48px; height: 96px; display: flex; align-items: center; justify-content: space-between; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); transition: box-shadow 0.3s var(--ease); }
-    nav.scrolled { box-shadow: 0 2px 24px rgba(45,34,24,0.07); }
+    nav { position: sticky; top: 0; z-index: 100; padding: 0 48px; height: 96px; display: flex; align-items: center; justify-content: space-between; transition: background 0.3s var(--ease), backdrop-filter 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease); }
+    .nav--light { background: rgba(250,247,242,0.85); backdrop-filter: blur(16px) saturate(140%); -webkit-backdrop-filter: blur(16px) saturate(140%); border-bottom: 1px solid var(--border-light); box-shadow: 0 2px 24px rgba(45,34,24,0.05); }
+    @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) { .nav--light { background: var(--cream); } }
     .nav-logo { display: flex; align-items: baseline; gap: 10px; }
     .nav-logo-mark { font-family: var(--serif); font-size: 28px; font-weight: 400; font-style: italic; color: var(--mocha); line-height: 1; }
     .nav-logo-text { font-size: 10px; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; color: var(--mocha-light); }
@@ -55,9 +57,9 @@
     /* ── Section helpers ── */
     .section-label { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
     .section-label::before { content: ''; display: block; width: 24px; height: 0.5px; background: var(--gold); }
-    .section-label-text { font-size: 11px; font-weight: 400; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); }
+    .section-label-text { font-size: 11px; font-weight: 400; letter-spacing: 0.25em; text-transform: uppercase; color: var(--mocha); }
     .section-h2 { font-family: var(--serif); font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 400; line-height: 1.05; color: var(--mocha); margin-bottom: 24px; }
-    .section-h2 em { font-style: italic; color: var(--gold); }
+    .section-h2 em { font-style: italic; color: var(--gold-deep); }
 
     /* ── About / Philosophy ── */
     .about { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
@@ -67,7 +69,7 @@
     .about-body { font-size: 17px; font-weight: 300; line-height: 1.8; color: var(--mocha-mid); max-width: 58ch; margin-bottom: 16px; }
     .about-values { margin-top: 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
     .about-value { padding: 20px 0; border-top: 0.5px solid var(--border); }
-    .about-value-label { font-size: 10px; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+    .about-value-label { font-size: 10px; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; color: var(--mocha); margin-bottom: 6px; }
     .about-value-text { font-family: var(--serif); font-size: 15px; font-style: italic; color: var(--mocha); line-height: 1.4; }
 
     /* ── Footer ── */

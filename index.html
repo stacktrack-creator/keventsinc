@@ -22,6 +22,7 @@
       --gold:        #C4A06A;
       --gold-light:  #D4B888;
       --gold-pale:   #EDD9AF;
+      --gold-deep:   #A37E48;
       --white:       #FFFFFF;
       --border:      rgba(45,34,24,0.12);
       --border-light:rgba(45,34,24,0.07);
@@ -64,21 +65,34 @@
 
     /* ── Navigation ── */
     nav {
+      position: sticky;
       top: 0;
-      left: 0;
-      right: 0;
       z-index: 100;
       padding: 0 48px;
       height: 96px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      transition: background 0.3s var(--ease), backdrop-filter 0.3s var(--ease),
+                  box-shadow 0.3s var(--ease), border-color 0.3s var(--ease);
     }
 
-    /* dark variant — transparent overlay on the hero */
+    /* dark variant — transparent over the hero, frosted glass once scrolled */
     .nav--dark {
-      position: absolute;
       background: transparent;
+      border-bottom: 1px solid transparent;
+    }
+
+    .nav--dark.nav--scrolled {
+      background: rgba(26,17,8,0.7);
+      backdrop-filter: blur(16px) saturate(140%);
+      -webkit-backdrop-filter: blur(16px) saturate(140%);
+      border-bottom-color: rgba(250,247,242,0.12);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.28);
+    }
+
+    @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+      .nav--dark.nav--scrolled { background: #1a1108; }
     }
 
     .nav-logo {
@@ -167,6 +181,7 @@
        with a dark overlay — swap in the real photo later. */
     .hero {
       position: relative;
+      margin-top: -96px;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -277,7 +292,7 @@
       font-size: 28px;
       font-weight: 400;
       line-height: 1;
-      color: var(--gold);
+      color: var(--gold-deep);
     }
 
     @keyframes marquee {
@@ -311,7 +326,7 @@
       font-weight: 400;
       letter-spacing: 0.25em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--mocha);
     }
 
     .section-h2 {
@@ -322,7 +337,7 @@
       color: var(--mocha);
     }
 
-    .section-h2 em { font-style: italic; color: var(--gold); }
+    .section-h2 em { font-style: italic; color: var(--gold-deep); }
 
     /* ── Welcome ── */
     .welcome {
@@ -467,7 +482,7 @@
       font-weight: 400;
       letter-spacing: 0.25em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--mocha);
     }
 
     .notes-grid {
@@ -1092,6 +1107,14 @@
       <div class="footer-booking">Now Booking 2026 &amp; 2027</div>
     </div>
   </footer>
+
+  <script>
+    // Frosted glass nav once scrolled past the hero lip
+    const mainNav = document.getElementById('main-nav');
+    const onNavScroll = () => mainNav.classList.toggle('nav--scrolled', window.scrollY > 80);
+    window.addEventListener('scroll', onNavScroll, { passive: true });
+    onNavScroll();
+  </script>
 
 <script>
 document.getElementById('inquiry-form').addEventListener('submit', async function(e) {
