@@ -162,19 +162,32 @@
     .nav-mobile-toggle {
       display: none;
       flex-direction: column;
+      justify-content: center;
       gap: 5px;
+      width: 28px;
+      height: 28px;
+      padding: 0;
       cursor: pointer;
+      z-index: 2;
     }
 
     .nav-mobile-toggle span {
       display: block;
       width: 24px;
-      height: 0.5px;
+      height: 1px;
       background: var(--mocha);
-      transition: all 0.3s;
+      transition: transform 0.3s var(--ease), opacity 0.3s var(--ease);
+      transform-origin: center;
     }
 
     .nav--dark .nav-mobile-toggle span { background: var(--cream); }
+
+    .nav--open .nav-mobile-toggle span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .nav--open .nav-mobile-toggle span:nth-child(2) { opacity: 0; }
+    .nav--open .nav-mobile-toggle span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+    /* mobile menu panel (shown only on mobile, see media query) */
+    .nav-menu { display: none; }
 
     /* ── Hero ── */
     /* The layered radial gradients stand in for a full-bleed venue photo
@@ -824,6 +837,74 @@
       .nav-links, .nav-pill { display: none; }
       .nav-mobile-toggle { display: flex; }
 
+      /* frosted bar when the menu is open on the dark (homepage) nav */
+      .nav--dark.nav--open {
+        background: rgba(26,17,8,0.85);
+        backdrop-filter: blur(16px) saturate(140%);
+        -webkit-backdrop-filter: blur(16px) saturate(140%);
+      }
+
+      .nav-menu {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        padding: 8px 24px 24px;
+        visibility: hidden;
+        opacity: 0;
+        transform: translateY(-12px);
+        transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), visibility 0.3s var(--ease);
+      }
+
+      .nav--open .nav-menu { visibility: visible; opacity: 1; transform: translateY(0); }
+
+      .nav-menu a {
+        font-size: 13px;
+        font-weight: 300;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        padding: 18px 0;
+      }
+
+      .nav-menu-link { border-bottom: 0.5px solid; }
+
+      .nav-menu-cta {
+        margin-top: 20px;
+        text-align: center;
+        border: 1px solid;
+        border-radius: 999px;
+        padding: 16px 0 !important;
+      }
+
+      /* dark frosted panel (homepage) */
+      .nav--dark .nav-menu {
+        background: rgba(26,17,8,0.85);
+        backdrop-filter: blur(16px) saturate(140%);
+        -webkit-backdrop-filter: blur(16px) saturate(140%);
+        border-bottom: 1px solid rgba(250,247,242,0.12);
+      }
+      .nav--dark .nav-menu a { color: rgba(250,247,242,0.88); }
+      .nav--dark .nav-menu-link { border-bottom-color: rgba(250,247,242,0.1); }
+      .nav--dark .nav-menu-cta { color: var(--cream); border-color: rgba(250,247,242,0.7); }
+
+      /* light frosted panel (subpages) */
+      .nav--light .nav-menu {
+        background: rgba(250,247,242,0.92);
+        backdrop-filter: blur(16px) saturate(140%);
+        -webkit-backdrop-filter: blur(16px) saturate(140%);
+        border-bottom: 1px solid var(--border-light);
+      }
+      .nav--light .nav-menu a { color: var(--mocha); }
+      .nav--light .nav-menu-link { border-bottom-color: var(--border-light); }
+      .nav--light .nav-menu-cta { color: var(--mocha); border-color: var(--mocha-light); }
+
+      @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+        .nav--dark.nav--open, .nav--dark .nav-menu { background: #1a1108; }
+        .nav--light .nav-menu { background: var(--cream); }
+      }
+
       .hero { min-height: auto; padding: 150px 24px 90px; }
       .hero-h1 { font-size: clamp(2.5rem, 11vw, 4rem); }
       .marquee-content { font-size: 20px; }
@@ -870,8 +951,15 @@
       <li><a href="#love-notes">Love Notes</a></li>
     </ul>
     <a href="#inquiry" class="nav-pill">Inquire</a>
-    <div class="nav-mobile-toggle" id="mobile-toggle" aria-label="Menu">
+    <button class="nav-mobile-toggle" id="mobile-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
       <span></span><span></span><span></span>
+    </button>
+    <div class="nav-menu" id="nav-menu">
+      <a href="/about.html" class="nav-menu-link">About</a>
+      <a href="/services.html" class="nav-menu-link">Services</a>
+      <a href="/portfolio.html" class="nav-menu-link">Portfolio</a>
+      <a href="#love-notes" class="nav-menu-link">Love Notes</a>
+      <a href="#inquiry" class="nav-menu-cta">Inquire</a>
     </div>
   </nav>
 
@@ -1114,6 +1202,50 @@
     const onNavScroll = () => mainNav.classList.toggle('nav--scrolled', window.scrollY > 80);
     window.addEventListener('scroll', onNavScroll, { passive: true });
     onNavScroll();
+
+    // Accessible mobile menu
+    (function () {
+      const nav = mainNav;
+      const toggle = document.getElementById('mobile-toggle');
+      const menu = document.getElementById('nav-menu');
+      if (!nav || !toggle || !menu) return;
+      let focusables = [];
+      const isOpen = () => nav.classList.contains('nav--open');
+
+      function openMenu() {
+        nav.classList.add('nav--open');
+        toggle.setAttribute('aria-expanded', 'true');
+        toggle.setAttribute('aria-label', 'Close menu');
+        focusables = Array.from(menu.querySelectorAll('a, button'));
+        document.addEventListener('keydown', onKeydown);
+        document.addEventListener('click', onOutside, true);
+        // defer to next frame so the panel is visible (focusable) before focusing
+        if (focusables.length) requestAnimationFrame(() => focusables[0].focus());
+      }
+      function closeMenu(returnFocus) {
+        nav.classList.remove('nav--open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open menu');
+        document.removeEventListener('keydown', onKeydown);
+        document.removeEventListener('click', onOutside, true);
+        if (returnFocus) toggle.focus();
+      }
+      function onKeydown(e) {
+        if (e.key === 'Escape') { e.preventDefault(); closeMenu(true); return; }
+        if (e.key === 'Tab' && focusables.length) {
+          const first = focusables[0], last = focusables[focusables.length - 1];
+          if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+          else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
+      }
+      function onOutside(e) { if (!nav.contains(e.target)) closeMenu(false); }
+
+      toggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        isOpen() ? closeMenu(false) : openMenu();
+      });
+      menu.addEventListener('click', (e) => { if (e.target.closest('a')) closeMenu(false); });
+    })();
   </script>
 
 <script>
