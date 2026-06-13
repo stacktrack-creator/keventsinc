@@ -62,60 +62,29 @@
     }
     .gold { color: var(--gold); }
 
-    /* ── Announcement Bar ── */
-    .announce {
-      background: var(--mocha);
-      color: var(--cream);
-      text-align: center;
-      padding: 10px 24px;
-      font-size: 11px;
-      font-weight: 300;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-    }
-
     /* ── Navigation ── */
     nav {
-      position: sticky;
       top: 0;
+      left: 0;
+      right: 0;
       z-index: 100;
-      background: var(--cream);
-      border-bottom: 0.5px solid var(--border);
       padding: 0 48px;
       height: 96px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      transition: box-shadow 0.3s var(--ease);
     }
 
-    nav.scrolled {
-      box-shadow: 0 2px 24px rgba(45,34,24,0.07);
+    /* dark variant — transparent overlay on the hero */
+    .nav--dark {
+      position: absolute;
+      background: transparent;
     }
 
     .nav-logo {
       display: flex;
       align-items: baseline;
       gap: 10px;
-    }
-
-    .nav-logo-mark {
-      font-family: var(--serif);
-      font-size: 28px;
-      font-weight: 400;
-      font-style: italic;
-      color: var(--mocha);
-      line-height: 1;
-    }
-
-    .nav-logo-text {
-      font-size: 10px;
-      font-weight: 300;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--mocha-light);
     }
 
     .nav-links {
@@ -132,7 +101,6 @@
       font-weight: 300;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--mocha-light);
       transition: color 0.2s;
     }
 
@@ -149,23 +117,33 @@
       transition: transform 0.3s var(--ease);
     }
 
-    .nav-links a:hover { color: var(--mocha); }
-
     .nav-links a:hover::after,
     .nav-links a:focus-visible::after { transform: scaleX(1); }
 
-    .nav-cta {
+    .nav--dark .nav-links a { color: rgba(250,247,242,0.85); }
+    .nav--dark .nav-links a:hover { color: var(--white); }
+
+    .nav-pill {
+      display: inline-block;
       font-size: 11px;
       font-weight: 300;
-      letter-spacing: 2px;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      background: var(--mocha);
-      color: var(--cream);
-      padding: 13px 28px;
-      transition: background 0.25s var(--ease), color 0.25s;
+      border-radius: 999px;
+      padding: 12px 28px;
+      transition: background 0.25s var(--ease), color 0.25s, border-color 0.25s;
     }
 
-    .nav-cta:hover { background: var(--gold); color: var(--mocha); }
+    .nav--dark .nav-pill {
+      color: var(--cream);
+      border: 1px solid rgba(250,247,242,0.7);
+    }
+
+    .nav--dark .nav-pill:hover {
+      background: var(--cream);
+      color: var(--mocha);
+      border-color: var(--cream);
+    }
 
     .nav-mobile-toggle {
       display: none;
@@ -182,16 +160,25 @@
       transition: all 0.3s;
     }
 
+    .nav--dark .nav-mobile-toggle span { background: var(--cream); }
+
     /* ── Hero ── */
+    /* The layered radial gradients stand in for a full-bleed venue photo
+       with a dark overlay — swap in the real photo later. */
     .hero {
-      min-height: calc(100vh - 136px);
+      position: relative;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 140px 24px;
-      background: var(--cream);
+      padding: 180px 24px 140px;
+      background:
+        radial-gradient(1100px 700px at 75% 12%, rgba(138,114,96,0.38), transparent 65%),
+        radial-gradient(900px 650px at 18% 85%, rgba(196,160,106,0.20), transparent 60%),
+        radial-gradient(700px 500px at 40% 35%, rgba(92,74,56,0.45), transparent 70%),
+        linear-gradient(160deg, #2a1f13 0%, #1a1108 55%, #110b05 100%);
     }
 
     .hero-eyebrow {
@@ -199,7 +186,7 @@
       font-weight: 400;
       letter-spacing: 0.25em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: rgba(250,247,242,0.7);
       margin-bottom: 36px;
     }
 
@@ -208,7 +195,7 @@
       font-size: clamp(3rem, 8vw, 6.5rem);
       font-weight: 400;
       line-height: 1.05;
-      color: var(--mocha);
+      color: var(--cream);
       margin-bottom: 36px;
     }
 
@@ -221,7 +208,7 @@
       font-size: 17px;
       font-weight: 300;
       line-height: 1.8;
-      color: var(--mocha-mid);
+      color: rgba(250,247,242,0.75);
       max-width: 52ch;
       margin: 0 auto 48px;
     }
@@ -234,19 +221,20 @@
       flex-wrap: wrap;
     }
 
-    .btn-primary {
+    .btn-outline {
       display: inline-block;
       font-size: 11px;
       font-weight: 300;
-      letter-spacing: 3px;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
-      background: var(--mocha);
       color: var(--cream);
-      padding: 16px 36px;
+      border: 1px solid rgba(250,247,242,0.8);
+      border-radius: 999px;
+      padding: 16px 40px;
       transition: background 0.25s var(--ease), color 0.25s;
     }
 
-    .btn-primary:hover { background: var(--gold); color: var(--mocha); }
+    .btn-outline:hover { background: var(--cream); color: var(--mocha); }
 
     .btn-secondary {
       font-size: 11px;
@@ -260,6 +248,9 @@
     }
 
     .btn-secondary:hover { color: var(--mocha); border-color: var(--mocha); }
+
+    .hero .btn-secondary { color: rgba(250,247,242,0.8); border-color: rgba(250,247,242,0.5); }
+    .hero .btn-secondary:hover { color: var(--white); border-color: var(--white); }
 
     /* ── Marquee Strip ── */
     .marquee {
@@ -815,10 +806,10 @@
     @media (max-width: 900px) {
       nav { padding: 0 24px; }
 
-      .nav-links, .nav-cta { display: none; }
+      .nav-links, .nav-pill { display: none; }
       .nav-mobile-toggle { display: flex; }
 
-      .hero { min-height: auto; padding: 80px 24px; }
+      .hero { min-height: auto; padding: 150px 24px 90px; }
       .hero-h1 { font-size: clamp(2.5rem, 11vw, 4rem); }
       .marquee-content { font-size: 20px; }
 
@@ -852,37 +843,37 @@
 </head>
 <body>
 
-  <!-- Announcement Bar -->
-  <div class="announce">Now Booking 2026 &amp; 2027 &mdash; Limited Availability</div>
-
   <!-- Navigation -->
-  <nav id="main-nav">
+  <nav id="main-nav" class="nav--dark">
     <a href="/" class="nav-logo" aria-label="K Events Inc. Home">
-      <img src="/logo.png" alt="K Events Inc." style="height: 72px; width: auto; filter: invert(1);" />
+      <img src="/logo.png" alt="K Events Inc." style="height: 72px; width: auto;" />
     </a>
     <ul class="nav-links">
+      <li><a href="/about.html">About</a></li>
       <li><a href="/services.html">Services</a></li>
       <li><a href="/portfolio.html">Portfolio</a></li>
-      <li><a href="/about.html">About</a></li>
+      <li><a href="#love-notes">Love Notes</a></li>
     </ul>
-    <a href="#inquiry" class="nav-cta">Let&rsquo;s Connect</a>
+    <a href="#inquiry" class="nav-pill">Inquire</a>
     <div class="nav-mobile-toggle" id="mobile-toggle" aria-label="Menu">
       <span></span><span></span><span></span>
     </div>
   </nav>
 
   <!-- Hero -->
+  <!-- TODO: replace the gradient background with a full-bleed venue photo + dark overlay -->
   <section class="hero" aria-label="Welcome">
-    <p class="hero-eyebrow">GTA Luxury Wedding Planning</p>
+    <p class="hero-eyebrow">Wedding &amp; Event Design &middot; K Events Inc</p>
     <h1 class="hero-h1">
       Celebrations,<br />
-      <em>beautifully</em> orchestrated
+      <em>beautifully</em><br />
+      orchestrated
     </h1>
     <p class="hero-sub">
-      Luxury weddings and celebrations across the GTA, planned with warmth and precision so you can live every moment.
+      A boutique planning &amp; design studio crafting weddings that feel unmistakably, unforgettably yours &mdash; from the first idea to the last dance.
     </p>
     <div class="hero-actions">
-      <a href="#inquiry" class="btn-primary">Inquire</a>
+      <a href="#inquiry" class="btn-outline">Inquire</a>
       <a href="/services.html" class="btn-secondary">Explore Services &rarr;</a>
     </div>
   </section>
@@ -941,7 +932,7 @@
   </section>
 
   <!-- Love Notes -->
-  <section class="notes" aria-label="Testimonials">
+  <section class="notes" id="love-notes" aria-label="Testimonials">
     <div class="notes-header">
       <div class="section-label">
         <span class="section-label-text">Love Notes</span>
@@ -1101,14 +1092,6 @@
       <div class="footer-booking">Now Booking 2026 &amp; 2027</div>
     </div>
   </footer>
-
-  <script>
-    // Sticky nav shadow on scroll
-    const nav = document.getElementById('main-nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 20);
-    }, { passive: true });
-  </script>
 
 <script>
 document.getElementById('inquiry-form').addEventListener('submit', async function(e) {
