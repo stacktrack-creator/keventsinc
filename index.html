@@ -562,6 +562,7 @@
     }
 
     .portfolio-img {
+      display: block;
       width: 100%;
       aspect-ratio: 4 / 5;
       object-fit: cover;
@@ -593,11 +594,6 @@
     }
 
     .portfolio-item:hover .portfolio-caption { transform: translateY(0); }
-
-    /* placeholder gradients — swap for final photography */
-    .pf-1 { background: linear-gradient(145deg, #d0bfa8, #c4ad92); }
-    .pf-2 { background: linear-gradient(145deg, #c8b498, #bca882); }
-    .pf-3 { background: linear-gradient(145deg, #d8cab8, #c8b8a4); }
 
     /* ── CTA / Inquiry ── */
     .cta-section {
@@ -962,7 +958,7 @@
     <ul class="nav-links">
       <li><a href="/about.html">About</a></li>
       <li><a href="/services.html">Services</a></li>
-      <li><a href="/portfolio.html">Portfolio</a></li>
+      <li><a href="/#portfolio">Portfolio</a></li>
       <li><a href="#love-notes">Love Notes</a></li>
     </ul>
     <a href="#inquiry" class="nav-pill">Inquire</a>
@@ -972,7 +968,7 @@
     <div class="nav-menu" id="nav-menu">
       <a href="/about.html" class="nav-menu-link">About</a>
       <a href="/services.html" class="nav-menu-link">Services</a>
-      <a href="/portfolio.html" class="nav-menu-link">Portfolio</a>
+      <a href="/#portfolio" class="nav-menu-link">Portfolio</a>
       <a href="#love-notes" class="nav-menu-link">Love Notes</a>
       <a href="#inquiry" class="nav-menu-cta">Inquire</a>
     </div>
@@ -1075,7 +1071,7 @@
   </section>
 
   <!-- Portfolio Teaser -->
-  <section class="portfolio-teaser" aria-label="Portfolio">
+  <section id="portfolio" class="portfolio-teaser" aria-label="Portfolio">
     <div class="portfolio-header">
       <div>
         <div class="section-label">
@@ -1083,31 +1079,24 @@
         </div>
         <h2 class="section-h2">Recent love <em>stories</em></h2>
       </div>
-      <a href="/portfolio.html" class="btn-secondary">View Full Portfolio &rarr;</a>
     </div>
     <div class="portfolio-grid">
       <div class="portfolio-item">
-        <div class="portfolio-img pf-1">
-          <!-- Replace with <img src="wedding-1.jpg" alt="A & S — Anand Karaj" /> -->
-        </div>
+        <img class="portfolio-img" src="images/sm.jpg" alt="S & M" />
         <div class="portfolio-overlay">
-          <div class="portfolio-caption">A &amp; S &mdash; Anand Karaj</div>
+          <div class="portfolio-caption">S &amp; M</div>
         </div>
       </div>
       <div class="portfolio-item">
-        <div class="portfolio-img pf-2">
-          <!-- Replace with <img src="wedding-2.jpg" alt="M & T — Grand Reception" /> -->
-        </div>
+        <img class="portfolio-img" src="images/rm.jpeg" alt="R & M" />
         <div class="portfolio-overlay">
-          <div class="portfolio-caption">M &amp; T &mdash; Grand Reception</div>
+          <div class="portfolio-caption">R &amp; M</div>
         </div>
       </div>
       <div class="portfolio-item">
-        <div class="portfolio-img pf-3">
-          <!-- Replace with <img src="wedding-3.jpg" alt="Y & S — Sangeet Night" /> -->
-        </div>
+        <img class="portfolio-img" src="images/at.png" alt="A & T" />
         <div class="portfolio-overlay">
-          <div class="portfolio-caption">Y &amp; S &mdash; Sangeet Night</div>
+          <div class="portfolio-caption">A &amp; T</div>
         </div>
       </div>
     </div>
