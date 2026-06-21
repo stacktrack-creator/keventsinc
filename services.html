@@ -78,6 +78,8 @@
     .offer-sub { font-size: 17px; font-weight: 300; line-height: 1.8; color: var(--mocha-mid); max-width: 58ch; margin: 0 auto; }
     .offer-list { border-top: 1px solid var(--border); }
     .offer-row { display: grid; grid-template-columns: 80px 1fr 40%; gap: 48px; align-items: center; padding: 80px 0; border-bottom: 1px solid var(--border); }
+    /* last row closes the list — drop its trailing padding/border so the gap to the next section matches the normal section rhythm */
+    .offer-row:last-child { padding-bottom: 0; border-bottom: none; }
     .offer-num { font-family: var(--serif); font-style: italic; font-size: 20px; font-weight: 400; line-height: 1; color: var(--gold-deep); }
     .offer-name { font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 400; line-height: 1.1; color: var(--mocha); transition: color 0.3s var(--ease); }
     .offer-row:hover .offer-name { color: var(--gold-deep); }
