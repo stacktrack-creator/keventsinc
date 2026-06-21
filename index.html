@@ -110,32 +110,48 @@
 
     .nav-links a {
       position: relative;
-      padding-bottom: 4px;
+      isolation: isolate;
+      padding: 8px 16px;
       font-size: 12px;
-      font-weight: 300;
+      font-weight: 600;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       transition: color 0.2s;
     }
 
-    .nav-links a::after {
+    /* liquid-glass pill that frames the text on hover/focus */
+    .nav-links a::before {
       content: '';
       position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      height: 1px;
-      background: var(--gold);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.3s var(--ease);
+      inset: 0;
+      z-index: -1;
+      border-radius: 999px;
+      opacity: 0;
+      transform: scale(0.97);
+      transition: opacity 0.25s var(--ease), transform 0.25s var(--ease);
     }
 
-    .nav-links a:hover::after,
-    .nav-links a:focus-visible::after { transform: scaleX(1); }
+    .nav-links a:hover::before,
+    .nav-links a:focus-visible::before {
+      opacity: 1;
+      transform: scale(1);
+    }
 
     .nav--dark .nav-links a { color: rgba(250,247,242,0.85); }
     .nav--dark .nav-links a:hover { color: var(--white); }
+
+    /* frosted-cream glass pill on the dark nav */
+    .nav--dark .nav-links a::before {
+      background: rgba(255,255,255,0.13);
+      backdrop-filter: blur(8px) saturate(140%);
+      -webkit-backdrop-filter: blur(8px) saturate(140%);
+      border: 1px solid rgba(255,255,255,0.18);
+      box-shadow: 0 4px 18px rgba(255,255,255,0.10), inset 0 1px 0 rgba(255,255,255,0.28);
+    }
+
+    @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+      .nav--dark .nav-links a::before { background: rgba(255,255,255,0.18); }
+    }
 
     .nav-pill {
       display: inline-block;
@@ -966,7 +982,7 @@
   <!-- Hero -->
   <!-- TODO: replace the gradient background with a full-bleed venue photo + dark overlay -->
   <section class="hero" aria-label="Welcome">
-    <p class="hero-eyebrow">Wedding &amp; Event Design &middot; K Events Inc</p>
+    <p class="hero-eyebrow">Wedding &amp; Event Planning</p>
     <h1 class="hero-h1">
       Celebrations,<br />
       <em>beautifully</em><br />

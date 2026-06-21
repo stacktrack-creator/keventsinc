@@ -45,10 +45,14 @@
     .nav-logo-mark { font-family: var(--serif); font-size: 28px; font-weight: 400; font-style: italic; color: var(--mocha); line-height: 1; }
     .nav-logo-text { font-size: 10px; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; color: var(--mocha-light); }
     .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
-    .nav-links a { position: relative; padding-bottom: 4px; font-size: 12px; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mocha); transition: color 0.2s; }
-    .nav-links a::after { content: ''; position: absolute; left: 0; bottom: 0; width: 100%; height: 1px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.3s var(--ease); }
+    .nav-links a { position: relative; isolation: isolate; padding: 8px 16px; font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mocha); transition: color 0.2s; }
+    /* liquid-glass pill that frames the text on hover/focus */
+    .nav-links a::before { content: ''; position: absolute; inset: 0; z-index: -1; border-radius: 999px; opacity: 0; transform: scale(0.97); transition: opacity 0.25s var(--ease), transform 0.25s var(--ease); }
+    .nav-links a:hover::before, .nav-links a:focus-visible::before { opacity: 1; transform: scale(1); }
     .nav-links a:hover { color: var(--mocha); }
-    .nav-links a:hover::after, .nav-links a:focus-visible::after { transform: scaleX(1); }
+    /* frosted-mocha glass pill on the light nav */
+    .nav--light .nav-links a::before { background: rgba(45,34,24,0.08); backdrop-filter: blur(8px) saturate(140%); -webkit-backdrop-filter: blur(8px) saturate(140%); border: 1px solid rgba(45,34,24,0.10); box-shadow: 0 4px 18px rgba(45,34,24,0.10), inset 0 1px 0 rgba(255,255,255,0.30); }
+    @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) { .nav--light .nav-links a::before { background: rgba(45,34,24,0.12); } }
     .nav-pill { display: inline-block; font-size: 11px; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mocha); border: 1px solid var(--mocha-light); border-radius: 999px; padding: 12px 28px; transition: background 0.25s var(--ease), color 0.25s, border-color 0.25s; }
     .nav-pill:hover { background: var(--mocha); color: var(--cream); border-color: var(--mocha); }
     .nav-mobile-toggle { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 28px; height: 28px; padding: 0; cursor: pointer; z-index: 2; }
