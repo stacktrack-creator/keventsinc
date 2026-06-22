@@ -946,6 +946,40 @@
       .footer-cols { grid-template-columns: 1fr; gap: 36px; margin-bottom: 56px; }
       .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
     }
+
+    /* ── Phone: hard-constrain every image frame ──
+       At phone widths the frames must keep their designed aspect-ratio and
+       never grow to an image's raw natural height. We re-assert aspect-ratio
+       (so it can't be lost), re-assert the inner img fill, and add a
+       max-height ceiling sized to each ratio at ~375px so cover-cropping
+       always wins over a leaked natural height. Keeps portraits portrait
+       and the stacked collage rhythm even. */
+    @media (max-width: 480px) {
+      .welcome-img-main   { aspect-ratio: 4 / 5; max-height: 440px; }
+      .welcome-img-detail { aspect-ratio: 1 / 1; max-height: 360px; margin-top: 24px; }
+      .fit-img            { aspect-ratio: 2 / 3; max-height: 520px; }
+
+      /* container frames: the inner img must fill the constrained box */
+      .welcome-img-main img,
+      .welcome-img-detail img,
+      .fit-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* portfolio tiles: the img IS the frame — its own ratio drives the
+         box, so height stays auto and max-height caps the natural height */
+      .portfolio-img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 4 / 5;
+        max-height: 440px;
+        object-fit: cover;
+        display: block;
+      }
+    }
   </style>
 </head>
 <body>
